@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.1.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Gulp 建立自己的自動化程序 - 學海無涯，回頭是岸</title>
+
+
+    <meta name="description" content="前言在進行網頁開發的時候，過程中可能有許多問題需要處理，以我的開發習慣來舉例：  編譯 SASS, Pug 壓縮 .css, .js 或圖檔 修改完成之後要不斷 F5 重整頁面 諸如此類…  雖然很多工具都可以完成各別的功能，但這樣在開發的過程中反而顯得相當沒效率，這時候我們就可以利用 Gulp 來協助我們建立自己的自動化程序。 安裝全域 GulpGulp 是 Node.js 的套件，所以必須先安">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gulp 建立自己的自動化程序">
+<meta property="og:url" content="https://blog.weitw.net/posts/c606cc8a/index.html">
+<meta property="og:site_name" content="學海無涯，回頭是岸">
+<meta property="og:description" content="前言在進行網頁開發的時候，過程中可能有許多問題需要處理，以我的開發習慣來舉例：  編譯 SASS, Pug 壓縮 .css, .js 或圖檔 修改完成之後要不斷 F5 重整頁面 諸如此類…  雖然很多工具都可以完成各別的功能，但這樣在開發的過程中反而顯得相當沒效率，這時候我們就可以利用 Gulp 來協助我們建立自己的自動化程序。 安裝全域 GulpGulp 是 Node.js 的套件，所以必須先安">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/OfLUYJm.png">
+<meta property="article:published_time" content="2017-04-14T17:44:20.000Z">
+<meta property="article:modified_time" content="2019-12-27T15:05:25.504Z">
+<meta property="article:author" content="Wei">
+<meta property="article:tag" content="Gulp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/OfLUYJm.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_16x16.ico">
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_32x32.ico">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_apple_touch.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102201439-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-102201439-2');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Gulp 建立自己的自動化程序" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="https://i.imgur.com/OfLUYJm.png" alt="Gulp 建立自己的自動化程序">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2017-04-14T17:44:20.000Z">2017-04-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Gulp 建立自己的自動化程序
+            
+        </h1>
+        <div class="content">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在進行網頁開發的時候，過程中可能有許多問題需要處理，以我的開發習慣來舉例：</p>
+<ul>
+<li>編譯 SASS, Pug</li>
+<li>壓縮 <code>.css</code>, <code>.js</code> 或圖檔</li>
+<li>修改完成之後要不斷 F5 重整頁面</li>
+<li>諸如此類…</li>
+</ul>
+<p>雖然很多工具都可以完成各別的功能，但這樣在開發的過程中反而顯得相當沒效率，這時候我們就可以利用 <a href="http://gulpjs.com/">Gulp</a> 來協助我們建立自己的自動化程序。</p>
+<h2 id="安裝全域-Gulp"><a href="#安裝全域-Gulp" class="headerlink" title="安裝全域 Gulp"></a>安裝全域 Gulp</h2><p>Gulp 是 Node.js 的套件，所以必須先安裝 Node.js 才可以安裝。</p>
+<p>檢查 npm 版本，3.0.2 以上才可順利安裝 Gulp</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm --version</span><br></pre></td></tr></table></figure>
+
+<p>安裝全域 Gulp</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp --global</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="安裝-Gulp-套件"><a href="#安裝-Gulp-套件" class="headerlink" title="安裝 Gulp 套件"></a>安裝 Gulp 套件</h2><p>首先要進行專案初始化，在專案資料夾底下輸入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+
+<p>安裝所要使用的套件，會產生一個 <code>node_modules</code> 資料來存放所有套件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp gulp-sass gulp-pug gulp-uglify gulp-imagemin gulp-connect gulp-livereload -save-dev</span><br></pre></td></tr></table></figure>
+
+<p>我個人常用的套件有下面這些：</p>
+<ul>
+<li>gulp-sass：CSS preprocessor，內建 CSS 檔案壓縮</li>
+<li>gulp-pug：HTML 的模板，原名是 Jade</li>
+<li>gulp-uglify：JavaScript 混淆與檔案壓縮</li>
+<li>gulp-imagemin：自動壓縮圖檔，支援 PNG, JPEG, GIF 和 SVG</li>
+<li>gulp-connect：在本地建立起網頁伺服器</li>
+<li>gulp-livereload：以伺服器方式打開網頁，搭配 <a href="https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei">chrome 插件</a>自動刷新頁面</li>
+</ul>
+<h2 id="資料夾結構"><a href="#資料夾結構" class="headerlink" title="資料夾結構"></a>資料夾結構</h2><p>在使用 Gulp 時，資料夾結構會影響到 Gulp 配置檔（<code>gulpfile.js</code>）的部分。</p>
+<p>以下是我的資料夾結構配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">|- src/    <span class="comment">#開發時的專案檔案資料夾</span></span><br><span class="line">    |- images/</span><br><span class="line">    |- index.js</span><br><span class="line">    |- style.sass</span><br><span class="line">    |- index.pug</span><br><span class="line">|- dist/    <span class="comment">#最終專案匯出的資料夾</span></span><br><span class="line">    |- images/</span><br><span class="line">    |- index.js</span><br><span class="line">    |- style.css</span><br><span class="line">    |- index.html</span><br><span class="line">|- gulpfile.js</span><br><span class="line">|- package.json</span><br><span class="line">|- node_modules/</span><br></pre></td></tr></table></figure>
+
+<h2 id="建立-gulpfile-js"><a href="#建立-gulpfile-js" class="headerlink" title="建立 gulpfile.js"></a>建立 gulpfile.js</h2><p>接下來在專案目錄下建立 <code>gulpfile.js</code>，這裡就不贅述細節，直接附上程式碼。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// import plugin</span></span><br><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">    sass = <span class="built_in">require</span>(<span class="string">'gulp-sass'</span>)</span><br><span class="line">    pug = <span class="built_in">require</span>(<span class="string">'gulp-pug'</span>)</span><br><span class="line">    uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>)</span><br><span class="line">    imagemin = <span class="built_in">require</span>(<span class="string">'gulp-imagemin'</span>)</span><br><span class="line">    connect = <span class="built_in">require</span>(<span class="string">'gulp-connect'</span>)</span><br><span class="line">    livereload = <span class="built_in">require</span>(<span class="string">'gulp-livereload'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// file paths</span></span><br><span class="line"><span class="keyword">const</span> stylePath = &#123;<span class="attr">src</span>: <span class="string">'src/*.sass'</span>, <span class="attr">dest</span>: <span class="string">'dist'</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> htmlPath = &#123;<span class="attr">src</span>: <span class="string">'src/*.pug'</span>, <span class="attr">dest</span>: <span class="string">'dist'</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> scriptPath = &#123;<span class="attr">src</span>: <span class="string">'src/*.js'</span>, <span class="attr">dest</span>: <span class="string">'dist'</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> imagePath = &#123;<span class="attr">src</span>: <span class="string">'src/images/**'</span>, <span class="attr">dest</span>: <span class="string">'dist/images'</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// default</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'sass'</span>, <span class="string">'pug'</span>, <span class="string">'js'</span>, <span class="string">'images'</span>, <span class="string">'server'</span>, <span class="string">'watch'</span>]);</span><br><span class="line"><span class="comment">// gulp-connect</span></span><br><span class="line">gulp.task(<span class="string">'server'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  connect.server(&#123;</span><br><span class="line">    root: <span class="string">''</span>,</span><br><span class="line">    livereload: <span class="literal">true</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp-sass</span></span><br><span class="line">gulp.task(<span class="string">'sass'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> gulp.src(stylePath.src)</span><br><span class="line">          .pipe(sass()) <span class="comment">// compile sass into CSS</span></span><br><span class="line">          .pipe(gulp.dest(stylePath.dest))</span><br><span class="line">          .pipe(connect.reload())</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp-pug</span></span><br><span class="line">gulp.task(<span class="string">'pug'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(htmlPath.src)</span><br><span class="line">    .pipe(pug(&#123; <span class="comment">// compile pug into HTML</span></span><br><span class="line">      pretty: <span class="literal">true</span></span><br><span class="line">    &#125;))</span><br><span class="line">    .pipe(gulp.dest(htmlPath.dest))</span><br><span class="line">    .pipe(connect.reload())</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp-uglify</span></span><br><span class="line">gulp.task(<span class="string">'js'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(scriptPath.src)</span><br><span class="line">    .pipe(uglify())  <span class="comment">// minify JavaScript</span></span><br><span class="line">    .pipe(gulp.dest(scriptPath.dest))</span><br><span class="line">    .pipe(connect.reload())</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp-imagemin  </span></span><br><span class="line">gulp.task(<span class="string">'images'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(imagePath.src)</span><br><span class="line">    .pipe(imagemin())  <span class="comment">// minify images</span></span><br><span class="line">    .pipe(gulp.dest(imagePath.dest)) </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// watch</span></span><br><span class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  gulp.watch(htmlPath.src, [<span class="string">'pug'</span>]);</span><br><span class="line">  gulp.watch(stylePath.src, [<span class="string">'sass'</span>]);</span><br><span class="line">  gulp.watch(scriptPath.src, [<span class="string">'js'</span>]);</span><br><span class="line">  gulp.watch(imagePath.src, [<span class="string">'images'</span>]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="執行-gulp"><a href="#執行-gulp" class="headerlink" title="執行 gulp"></a>執行 gulp</h2><p>輸入 <code>gulp</code> 就可以開始執行我們的自動化流程了！</p>
+<p>每當有新專案時，只要複製前個專案的 <code>package.json</code> 和 <code>gulpfile.js</code> 再執行 <code>npm install</code> 就可以了。</p>
+<p>我也把模板放上了 <a href="https://github.com/wei840220/GulpTemplate">Github</a>，日後也可以直接 fork 下來。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://www.gitbook.com/book/kejyuntw/gulp-learning-notes/details">gulp 學習筆記</a></li>
+<li><a href="https://qq7886.gitbooks.io/gulp-beginner/content/">Gulp 基礎入門 - 2017</a></li>
+<li><a href="http://www.oxxostudio.tw/articles/201503/gulp-4-scss-sass.html">Gulp 學習 - 建立 SCSS/SASS 編輯環境</a></li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Gulp/" rel="tag">Gulp</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5dff41b1c633020012066e80&amp;product=inline-share-buttons' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/2bb3134/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">HTML5 的資料屬性 (data-* attribute)</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/6468559b/">
+                <span class="level-item">JSON &amp; AJAX 基本觀念與實作</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'fd2f9e90a257cb6a0b0c',
+        clientSecret: '2e3523d1ba41d26ae4d0bdcfa948075ae26e16fc',
+        id: '8f15b885b7cf1d6507c39e06741b67f3',
+        repo: 'blog',
+        owner: 'wei840220',
+        admin: "wei840220",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Wei">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Wei
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        A Front-End Engineer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Asian, Taiwan</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            12
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            2
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            22
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/wei840220" target="_blank" rel="noopener">
+                追蹤</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/wei840220">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Gmail" href="mailto:wei840220@gmail.com">
+                
+                <i class="fab fa-google"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#前言">
+        <span class="has-mr-6">1</span>
+        <span>前言</span>
+        </a></li><li>
+        <a class="is-flex" href="#安裝全域-Gulp">
+        <span class="has-mr-6">2</span>
+        <span>安裝全域 Gulp</span>
+        </a></li><li>
+        <a class="is-flex" href="#安裝-Gulp-套件">
+        <span class="has-mr-6">3</span>
+        <span>安裝 Gulp 套件</span>
+        </a></li><li>
+        <a class="is-flex" href="#資料夾結構">
+        <span class="has-mr-6">4</span>
+        <span>資料夾結構</span>
+        </a></li><li>
+        <a class="is-flex" href="#建立-gulpfile-js">
+        <span class="has-mr-6">5</span>
+        <span>建立 gulpfile.js</span>
+        </a></li><li>
+        <a class="is-flex" href="#執行-gulp">
+        <span class="has-mr-6">6</span>
+        <span>執行 gulp</span>
+        </a></li><li>
+        <a class="is-flex" href="#參考資料">
+        <span class="has-mr-6">7</span>
+        <span>參考資料</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            標籤雲
+        </h3>
+        <a href="/tags/AJAX/" style="font-size: 20px;">AJAX</a> <a href="/tags/AMP/" style="font-size: 10px;">AMP</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI/CD</a> <a href="/tags/Cloudflare/" style="font-size: 10px;">Cloudflare</a> <a href="/tags/Comet/" style="font-size: 10px;">Comet</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Google-Domains/" style="font-size: 10px;">Google Domains</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/HTML5/" style="font-size: 20px;">HTML5</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/NCTUCS/" style="font-size: 10px;">NCTUCS</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/SFTP/" style="font-size: 10px;">SFTP</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Websocket/" style="font-size: 10px;">Websocket</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/747bdc82/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/MnQEFox.png" alt="什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T17:24:59.000Z">2019-12-23</time></div>
+                    <a href="/posts/747bdc82/" class="title has-link-black-ter is-size-6 has-text-weight-normal">什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/350dd70b/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/ecETp6l.png" alt="Hexo + GitHub Actions 打造自動部署">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T15:59:59.000Z">2019-12-22</time></div>
+                    <a href="/posts/350dd70b/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo + GitHub Actions 打造自動部署</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/7694b685/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1920/1*nfvapd86apvGH-hNBYkYuw.png" alt="Vue.js 新手上路">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-02-03T15:06:49.000Z">2018-02-03</time></div>
+                    <a href="/posts/7694b685/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue.js 新手上路</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/dc7de635/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1460/1*ClDLBc3jPb-Rg7h-fC5p_Q.png" alt="淺談 AMP (Accelerated Mobile Pages)">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-10T02:51:00.000Z">2017-12-10</time></div>
+                    <a href="/posts/dc7de635/" class="title has-link-black-ter is-size-6 has-text-weight-normal">淺談 AMP (Accelerated Mobile Pages)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/9d63e457/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://snippetinfo.net/sysdata/doc/4/41f7d6c3f65e1b1a/c291.jpg" alt="善用 Rebase 的 Git 工作流程">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-11-01T02:53:37.000Z">2017-11-01</time></div>
+                    <a href="/posts/9d63e457/" class="title has-link-black-ter is-size-6 has-text-weight-normal">善用 Rebase 的 Git 工作流程</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            標籤雲
+        </h3>
+        <a href="/tags/AJAX/" style="font-size: 20px;">AJAX</a> <a href="/tags/AMP/" style="font-size: 10px;">AMP</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI/CD</a> <a href="/tags/Cloudflare/" style="font-size: 10px;">Cloudflare</a> <a href="/tags/Comet/" style="font-size: 10px;">Comet</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Google-Domains/" style="font-size: 10px;">Google Domains</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/HTML5/" style="font-size: 20px;">HTML5</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/NCTUCS/" style="font-size: 10px;">NCTUCS</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/SFTP/" style="font-size: 10px;">SFTP</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Websocket/" style="font-size: 10px;">Websocket</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/747bdc82/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/MnQEFox.png" alt="什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T17:24:59.000Z">2019-12-23</time></div>
+                    <a href="/posts/747bdc82/" class="title has-link-black-ter is-size-6 has-text-weight-normal">什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/350dd70b/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/ecETp6l.png" alt="Hexo + GitHub Actions 打造自動部署">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T15:59:59.000Z">2019-12-22</time></div>
+                    <a href="/posts/350dd70b/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo + GitHub Actions 打造自動部署</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/7694b685/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1920/1*nfvapd86apvGH-hNBYkYuw.png" alt="Vue.js 新手上路">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-02-03T15:06:49.000Z">2018-02-03</time></div>
+                    <a href="/posts/7694b685/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue.js 新手上路</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/dc7de635/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1460/1*ClDLBc3jPb-Rg7h-fC5p_Q.png" alt="淺談 AMP (Accelerated Mobile Pages)">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-10T02:51:00.000Z">2017-12-10</time></div>
+                    <a href="/posts/dc7de635/" class="title has-link-black-ter is-size-6 has-text-weight-normal">淺談 AMP (Accelerated Mobile Pages)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/9d63e457/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://snippetinfo.net/sysdata/doc/4/41f7d6c3f65e1b1a/c291.jpg" alt="善用 Rebase 的 Git 工作流程">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-11-01T02:53:37.000Z">2017-11-01</time></div>
+                    <a href="/posts/9d63e457/" class="title has-link-black-ter is-size-6 has-text-weight-normal">善用 Rebase 的 Git 工作流程</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Gulp 建立自己的自動化程序" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Wei&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Shown on GitHub" href="https://github.com/wei840220/blog">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://blog.weitw.net',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

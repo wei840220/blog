@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.1.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>使用 Sublime SFTP 同步檔案 - 學海無涯，回頭是岸</title>
+
+
+    <meta name="description" content="前言在開始介紹 SFTP 以前，我們要先聊聊 SSH (Secure Shell) 協定。沒聽過 SSH 嗎？ 那你或許有聽過 Telnet，沒錯！就是廣大鄉民們平常用來上 PTT 的連線協定。Telnet 易用，速度又快，只要執行 Telnet 程式來連線到遠端伺服器，使用者輸入帳密後便可以遠端控制主機。 但是由於 Telnet 傳輸的資料並未加密，所以容易遭到竊取，後來 SSH 橫空出世，SS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Sublime SFTP 同步檔案">
+<meta property="og:url" content="https://blog.weitw.net/posts/83ff426e/index.html">
+<meta property="og:site_name" content="學海無涯，回頭是岸">
+<meta property="og:description" content="前言在開始介紹 SFTP 以前，我們要先聊聊 SSH (Secure Shell) 協定。沒聽過 SSH 嗎？ 那你或許有聽過 Telnet，沒錯！就是廣大鄉民們平常用來上 PTT 的連線協定。Telnet 易用，速度又快，只要執行 Telnet 程式來連線到遠端伺服器，使用者輸入帳密後便可以遠端控制主機。 但是由於 Telnet 傳輸的資料並未加密，所以容易遭到竊取，後來 SSH 橫空出世，SS">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/mYb9TQo.png">
+<meta property="article:published_time" content="2017-08-23T12:26:07.000Z">
+<meta property="article:modified_time" content="2019-12-27T15:05:25.504Z">
+<meta property="article:author" content="Wei">
+<meta property="article:tag" content="Sublime">
+<meta property="article:tag" content="SFTP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/mYb9TQo.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_16x16.ico">
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_32x32.ico">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_apple_touch.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102201439-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-102201439-2');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="使用 Sublime SFTP 同步檔案" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="https://i.imgur.com/mYb9TQo.png" alt="使用 Sublime SFTP 同步檔案">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2017-08-23T12:26:07.000Z">2017-08-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                使用 Sublime SFTP 同步檔案
+            
+        </h1>
+        <div class="content">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在開始介紹 SFTP 以前，我們要先聊聊 <strong>SSH (Secure Shell)</strong> 協定。沒聽過 SSH 嗎？</p>
+<p>那你或許有聽過 <strong>Telnet</strong>，沒錯！就是廣大鄉民們平常用來上 PTT 的連線協定。<br>Telnet 易用，速度又快，只要執行 Telnet 程式來連線到遠端伺服器，使用者輸入帳密後便可以遠端控制主機。</p>
+<p>但是由於 Telnet 傳輸的資料並未加密，所以容易遭到竊取，後來 SSH 橫空出世，SSH 預設是以金鑰為基礎來驗證及加密傳輸，也可以省去輸入帳號密碼的步驟，大家也就多改用較為安全的 SSH。</p>
+<h2 id="SSH（Secure-Shell）"><a href="#SSH（Secure-Shell）" class="headerlink" title="SSH（Secure Shell）"></a>SSH（Secure Shell）</h2><p>接下來我們進一步介紹 SSH 協定的運作原理：</p>
+<ol>
+<li>靠加密編碼的演算法，產生一組很長又混亂的字串及檔案</li>
+<li>這組資料分別為<strong>私鑰 (private key)</strong> 與<strong>公鑰 (public key)</strong></li>
+<li>接著<strong>將公鑰傳至想要可以免帳號密碼登入的主機上</strong></li>
+<li>登入主機進行驗證後，主機就會認為你是經過驗證的使用者，就可以登入囉。</li>
+</ol>
+<a id="more"></a>
+
+<h2 id="在-OSX-與-Linux-環境下產生-SSH-key"><a href="#在-OSX-與-Linux-環境下產生-SSH-key" class="headerlink" title="在 OSX 與 Linux 環境下產生 SSH key"></a>在 OSX 與 Linux 環境下產生 SSH key</h2><p>由於 OS X 跟 Linux 都是 Unix-Like 系統，所以產生的方式都一樣。<br>步驟如下：</p>
+<ol>
+<li>使用內建的終端機 </li>
+<li><code>ssh-keygen</code> 建立 ssh key</li>
+<li><code>ls -al</code> 會看到生成了兩個檔案：<code>id_rsa.pub</code> <code>id_rsa</code><br>也就是你所持有的公鑰與私鑰</li>
+<li>把 <code>id_rsa.pub</code> 的內容加入 server 端的 <code>~/.ssh/authorized_keys</code></li>
+<li>建立連線 <code>ssh USER@SSH_SERVER</code></li>
+</ol>
+<h2 id="在-Windows-環境下產生-SSH-key"><a href="#在-Windows-環境下產生-SSH-key" class="headerlink" title="在 Windows 環境下產生 SSH key"></a>在 Windows 環境下產生 SSH key</h2><p>在 Windows 中有兩種類型的程式可以支援 SSH：</p>
+<ul>
+<li><strong>OpenSSH</strong> - 安裝完 git 會自動安裝</li>
+<li><strong>PuTTY</strong></li>
+</ul>
+<p>使用 <strong>OpenSSH</strong> 的步驟如下：</p>
+<ol>
+<li>使用 PowerShell  </li>
+<li>安裝 git 會順便安裝 OpenSSH</li>
+<li>先建立 .ssh 的資料夾<br>通常安裝 git 的時候在產生 github_rsa 的時候就已經建好了</li>
+<li><code>ssh-keygen</code> 建立 ssh key</li>
+<li><code>ls</code> 會看到生成了兩個檔案：<code>id_rsa.pub</code> <code>id_rsa</code></li>
+<li>把 <code>id_rsa.pub</code> 的內容加入 server 端的 <code>~/.ssh/authorized_keys</code></li>
+<li>建立連線 <code>ssh USER@SSH_SERVER</code></li>
+</ol>
+<p>雖然可以順利的手動連線，但是很遺憾的，<strong>OpenSSH</strong> 的公鑰/私鑰的格式和 Linux 環境之下是不同的，由於我們之後還想要使用 <strong>SFTP</strong>，為了避免在後續操作會導致 <code>Sublime SFTP Connection timeout</code>，那就必須利用 <strong>puttygen.exe</strong> 對公鑰/私鑰進行格式轉換。</p>
+<p>這樣做實在太麻煩了，不如我們就直接使用 <strong>puttygen.exe</strong> 來生成金鑰吧：</p>
+<ol>
+<li>使用 PowerShell  </li>
+<li>下載 <strong>puttygen.exe</strong>，打開之後點選 Generate<br>滑鼠在 key 區空白位置晃動，可加快生成隨機數</li>
+<li>在 key comment 填寫備註</li>
+<li>在 key passphras 填寫 key 的密碼，如同前面步驟，也可以選擇不設置</li>
+<li>把上方框框中的內容，也就是公鑰複製到 server 端的 <code>/.ssh/authorized_keys</code> 之中</li>
+<li>點擊 puttygen.exe 中的 Save private key，保存私鑰 <strong>id_rsa.ppk</strong></li>
+<li>建立連線 <code>ssh USER@SSH_SERVER</code></li>
+</ol>
+<h2 id="使用-Sublime-SFTP-同步檔案"><a href="#使用-Sublime-SFTP-同步檔案" class="headerlink" title="使用 Sublime SFTP 同步檔案"></a>使用 Sublime SFTP 同步檔案</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">註：本文撰寫於 2017&#x2F;08，我後來跳槽使用 VSCode。</span><br><span class="line">官方直接支援 SSH 連線到伺服器進行開發，我認為方便多了。</span><br></pre></td></tr></table></figure>
+
+<p>來到本文的正題，也就是如何在 <a href="https://www.sublimetext.com/3">Sublime Text3</a> 上借助 <a href="https://wbond.net/sublime_packages/sftp">SFTP</a> 這個套件來幫助我們更加快速與便利地去建立 SSH 連線和管理檔案：</p>
+<ul>
+<li><strong>安裝 SFTP</strong><br>如同其他套件，利用 <code>package control install package</code> 輸入 <code>sftp</code> 後就會自動下載</li>
+<li><strong>配置文件</strong><br>在第一次執行之前，我們必須設定配置文件 <code>sftp-sonfig.json</code><br>簡單介紹幾個選項</li>
+<li>連線設定<ul>
+<li><code>type</code> 有 sftp, ftp, ftps 等連線可選，在這裡我們選擇 <code>sftp</code></li>
+<li><code>host</code> SSH_SERVER</li>
+<li><code>user</code> USER</li>
+<li><code>password</code> 預設沒有使用的話，註解就好</li>
+<li><code>port</code> 沒有指定的話，註解就好</li>
+<li><code>ssh_key_file</code> 在 windows 環境中，設定成剛才儲存的 <strong>id_rsa.ppk</strong> 的路徑，<br>例如 <code>&quot;C:\/Users\/username\/.ssh\/id_rsa.ppk&quot;</code></li>
+</ul>
+</li>
+<li>同步設定<ul>
+<li><code>save_before_upload</code> 上傳前，local 自動存檔</li>
+<li><code>sync_down_on_open</code> local 開啟檔案時，自動從遠端同步（保留 local 原 code）</li>
+<li><code>sync_skip_deletes</code> 同步時，跳過刪除的檔案</li>
+<li><code>sync_same_age</code> 時間戳相同的檔案一併同步</li>
+<li><code>confirm_downloads</code> 下載時不要詢問</li>
+<li><code>confirm_sync</code> 同步時不要詢問</li>
+<li><code>confirm_overwrite_newer</code> 覆寫時不要詢問</li>
+</ul>
+</li>
+<li>同步檔案<ul>
+<li><code>remote_path</code> 遠端同步的資料夾</li>
+<li><code>ignore_regexes</code> 同步資料夾下忽略的檔案</li>
+</ul>
+</li>
+<li><strong>進行連線</strong><br>儲存配置文件後，即可在目錄按下滑鼠右鍵直接操作<br><img src="http://i.imgur.com/6iF3MY7.png" alt=""></li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="http://blog.itist.tw/2015/03/login-ssh-server-without-username-and-password.html">別讓 MIS 不開心，免密碼直接登入遠端的 SSH Server</a></li>
+<li><a href="https://kknews.cc/other/y8k2a2k.html">SublimeText3中使用SFTP編輯遠程伺服器文件</a></li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/SFTP/" rel="tag">SFTP</a>, <a class="has-link-grey -link" href="/tags/Sublime/" rel="tag">Sublime</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5dff41b1c633020012066e80&amp;product=inline-share-buttons' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/20d7c148/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">我在社群網路公司實習的日子</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/2b10bcfa/">
+                <span class="level-item">淺談 Polling, Comet, Websocket</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'fd2f9e90a257cb6a0b0c',
+        clientSecret: '2e3523d1ba41d26ae4d0bdcfa948075ae26e16fc',
+        id: '6fdb64223e1b30c4022bf695d69592af',
+        repo: 'blog',
+        owner: 'wei840220',
+        admin: "wei840220",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Wei">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Wei
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        A Front-End Engineer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Asian, Taiwan</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            12
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            2
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            22
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/wei840220" target="_blank" rel="noopener">
+                追蹤</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/wei840220">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Gmail" href="mailto:wei840220@gmail.com">
+                
+                <i class="fab fa-google"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#前言">
+        <span class="has-mr-6">1</span>
+        <span>前言</span>
+        </a></li><li>
+        <a class="is-flex" href="#SSH（Secure-Shell）">
+        <span class="has-mr-6">2</span>
+        <span>SSH（Secure Shell）</span>
+        </a></li><li>
+        <a class="is-flex" href="#在-OSX-與-Linux-環境下產生-SSH-key">
+        <span class="has-mr-6">3</span>
+        <span>在 OSX 與 Linux 環境下產生 SSH key</span>
+        </a></li><li>
+        <a class="is-flex" href="#在-Windows-環境下產生-SSH-key">
+        <span class="has-mr-6">4</span>
+        <span>在 Windows 環境下產生 SSH key</span>
+        </a></li><li>
+        <a class="is-flex" href="#使用-Sublime-SFTP-同步檔案">
+        <span class="has-mr-6">5</span>
+        <span>使用 Sublime SFTP 同步檔案</span>
+        </a></li><li>
+        <a class="is-flex" href="#參考資料">
+        <span class="has-mr-6">6</span>
+        <span>參考資料</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            標籤雲
+        </h3>
+        <a href="/tags/AJAX/" style="font-size: 20px;">AJAX</a> <a href="/tags/AMP/" style="font-size: 10px;">AMP</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI/CD</a> <a href="/tags/Cloudflare/" style="font-size: 10px;">Cloudflare</a> <a href="/tags/Comet/" style="font-size: 10px;">Comet</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Google-Domains/" style="font-size: 10px;">Google Domains</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/HTML5/" style="font-size: 20px;">HTML5</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/NCTUCS/" style="font-size: 10px;">NCTUCS</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/SFTP/" style="font-size: 10px;">SFTP</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Websocket/" style="font-size: 10px;">Websocket</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/747bdc82/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/MnQEFox.png" alt="什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T17:24:59.000Z">2019-12-23</time></div>
+                    <a href="/posts/747bdc82/" class="title has-link-black-ter is-size-6 has-text-weight-normal">什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/350dd70b/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/ecETp6l.png" alt="Hexo + GitHub Actions 打造自動部署">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T15:59:59.000Z">2019-12-22</time></div>
+                    <a href="/posts/350dd70b/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo + GitHub Actions 打造自動部署</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/7694b685/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1920/1*nfvapd86apvGH-hNBYkYuw.png" alt="Vue.js 新手上路">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-02-03T15:06:49.000Z">2018-02-03</time></div>
+                    <a href="/posts/7694b685/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue.js 新手上路</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/dc7de635/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1460/1*ClDLBc3jPb-Rg7h-fC5p_Q.png" alt="淺談 AMP (Accelerated Mobile Pages)">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-10T02:51:00.000Z">2017-12-10</time></div>
+                    <a href="/posts/dc7de635/" class="title has-link-black-ter is-size-6 has-text-weight-normal">淺談 AMP (Accelerated Mobile Pages)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/9d63e457/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://snippetinfo.net/sysdata/doc/4/41f7d6c3f65e1b1a/c291.jpg" alt="善用 Rebase 的 Git 工作流程">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-11-01T02:53:37.000Z">2017-11-01</time></div>
+                    <a href="/posts/9d63e457/" class="title has-link-black-ter is-size-6 has-text-weight-normal">善用 Rebase 的 Git 工作流程</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            標籤雲
+        </h3>
+        <a href="/tags/AJAX/" style="font-size: 20px;">AJAX</a> <a href="/tags/AMP/" style="font-size: 10px;">AMP</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI/CD</a> <a href="/tags/Cloudflare/" style="font-size: 10px;">Cloudflare</a> <a href="/tags/Comet/" style="font-size: 10px;">Comet</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Google-Domains/" style="font-size: 10px;">Google Domains</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/HTML5/" style="font-size: 20px;">HTML5</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/NCTUCS/" style="font-size: 10px;">NCTUCS</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/SFTP/" style="font-size: 10px;">SFTP</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Websocket/" style="font-size: 10px;">Websocket</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/747bdc82/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/MnQEFox.png" alt="什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T17:24:59.000Z">2019-12-23</time></div>
+                    <a href="/posts/747bdc82/" class="title has-link-black-ter is-size-6 has-text-weight-normal">什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/350dd70b/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/ecETp6l.png" alt="Hexo + GitHub Actions 打造自動部署">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T15:59:59.000Z">2019-12-22</time></div>
+                    <a href="/posts/350dd70b/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo + GitHub Actions 打造自動部署</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/7694b685/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1920/1*nfvapd86apvGH-hNBYkYuw.png" alt="Vue.js 新手上路">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-02-03T15:06:49.000Z">2018-02-03</time></div>
+                    <a href="/posts/7694b685/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue.js 新手上路</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/dc7de635/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1460/1*ClDLBc3jPb-Rg7h-fC5p_Q.png" alt="淺談 AMP (Accelerated Mobile Pages)">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-10T02:51:00.000Z">2017-12-10</time></div>
+                    <a href="/posts/dc7de635/" class="title has-link-black-ter is-size-6 has-text-weight-normal">淺談 AMP (Accelerated Mobile Pages)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/9d63e457/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://snippetinfo.net/sysdata/doc/4/41f7d6c3f65e1b1a/c291.jpg" alt="善用 Rebase 的 Git 工作流程">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-11-01T02:53:37.000Z">2017-11-01</time></div>
+                    <a href="/posts/9d63e457/" class="title has-link-black-ter is-size-6 has-text-weight-normal">善用 Rebase 的 Git 工作流程</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="使用 Sublime SFTP 同步檔案" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Wei&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Shown on GitHub" href="https://github.com/wei840220/blog">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://blog.weitw.net',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

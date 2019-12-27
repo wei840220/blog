@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.1.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Vue.js 新手上路 - 學海無涯，回頭是岸</title>
+
+
+    <meta name="description" content="前言在開始學習今天的主題之前，我們要來先討論一下：為什麼要學框架（Framework）？因為很潮正夯特流行嗎？因為業界好找工作嗎？又有什麼是只用 jQuery 辦不到的事情嗎？ 簡單來說，jQuery 是以 DOM 元素來觸發功能，能幫助我們更簡單的實現網頁上的資料互動及事件處理方法，同時也簡化了許多 AJAX 的操作方法，是設計動畫效果的絕佳利器。 然而 框架（Framework） 包括你聽過的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue.js 新手上路">
+<meta property="og:url" content="https://blog.weitw.net/posts/7694b685/index.html">
+<meta property="og:site_name" content="學海無涯，回頭是岸">
+<meta property="og:description" content="前言在開始學習今天的主題之前，我們要來先討論一下：為什麼要學框架（Framework）？因為很潮正夯特流行嗎？因為業界好找工作嗎？又有什麼是只用 jQuery 辦不到的事情嗎？ 簡單來說，jQuery 是以 DOM 元素來觸發功能，能幫助我們更簡單的實現網頁上的資料互動及事件處理方法，同時也簡化了許多 AJAX 的操作方法，是設計動畫效果的絕佳利器。 然而 框架（Framework） 包括你聽過的">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1920/1*nfvapd86apvGH-hNBYkYuw.png">
+<meta property="article:published_time" content="2018-02-03T15:06:49.000Z">
+<meta property="article:modified_time" content="2019-12-27T15:05:25.504Z">
+<meta property="article:author" content="Wei">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/1920/1*nfvapd86apvGH-hNBYkYuw.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_16x16.ico">
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_32x32.ico">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_apple_touch.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102201439-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-102201439-2');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Vue.js 新手上路" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1920/1*nfvapd86apvGH-hNBYkYuw.png" alt="Vue.js 新手上路">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-02-03T15:06:49.000Z">2018-02-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Vue.js 新手上路
+            
+        </h1>
+        <div class="content">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在開始學習今天的主題之前，我們要來先討論一下：<strong>為什麼要學框架（Framework）？</strong><br>因為很潮正夯特流行嗎？因為業界好找工作嗎？又有什麼是只用 jQuery 辦不到的事情嗎？</p>
+<p>簡單來說，<strong>jQuery</strong> 是<strong>以 DOM 元素來觸發功能</strong>，能幫助我們更簡單的實現網頁上的資料互動及事件處理方法，同時也簡化了許多 AJAX 的操作方法，是設計動畫效果的絕佳利器。</p>
+<p>然而 <strong>框架（Framework）</strong> 包括你聽過的三神獸 <strong>Vue</strong>, <strong>Angular</strong>, <strong>React</strong>，都是<strong>以資料來驅動功能</strong>，適合用來撰寫一些以資料為主體的網頁以及 SPA，能幫助我們更加簡潔地去處理資料邏輯。</p>
+<a id="more"></a>
+
+<h2 id="進入-Vue-js-世界"><a href="#進入-Vue-js-世界" class="headerlink" title="進入 Vue.js 世界"></a>進入 Vue.js 世界</h2><p>讓我們先寫一個簡單的  <strong>Vue 建構式（Vue Vonstructor）</strong> 來建立 view model ：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'.app'</span>, <span class="comment">// 要綁定的 DOM element，即作用範圍</span></span><br><span class="line">  data: &#123; <span class="comment">// 資料綁定</span></span><br><span class="line">  	msg: <span class="string">'Hello World!'</span>, </span><br><span class="line">  	users: [&#123;<span class="attr">name</span>: <span class="string">'Tom'</span>, <span class="attr">gender</span>: <span class="string">'male'</span>, <span class="attr">age</span>: <span class="number">20</span>&#125;,&#123;<span class="attr">name</span>: <span class="string">'Alice'</span>, <span class="attr">gender</span>: <span class="string">'female'</span>, <span class="attr">age</span>: <span class="number">18</span>&#125;] ,</span><br><span class="line">        isActive: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;&#125;, <span class="comment">// 當資料改變時，對應更新的變動值</span></span><br><span class="line">  methods: &#123;&#125; <span class="comment">// 可以定義在元件或樣板內使用的 method</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="資料綁定-Data-Binding"><a href="#資料綁定-Data-Binding" class="headerlink" title="資料綁定 Data Binding"></a>資料綁定 Data Binding</h2><h4 id="data-的作用"><a href="#data-的作用" class="headerlink" title="data 的作用"></a>data 的作用</h4><ul>
+<li>儲存元件內部狀態或資料</li>
+<li>和 v-model 合作實現雙向綁定</li>
+</ul>
+<p>利用 Mustache 的雙括號語法以及 <strong>模板語法</strong> 可以直接將 data 的值置入</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h4><p>雙括號語法不能直接寫入 html 的屬性之中，需使用 <code>v-bind</code> 語法作屬性綁定，縮寫為 <code>:</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"userList"</span> <span class="attr">:class</span>=<span class="string">"&#123; active: isActive &#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"userItem"</span> <span class="attr">v-for</span>=<span class="string">"item in users"</span> <span class="attr">:key</span>=<span class="string">"item.id"</span>&gt;</span>&#123;&#123;item.name&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="其他模板語法"><a href="#其他模板語法" class="headerlink" title="其他模板語法"></a>其他模板語法</h4><ul>
+<li><strong>v-if</strong> , <strong>v-else-if</strong>, <strong>v-else</strong><br>形如 <code>v-if=&quot;boolean&quot;</code> ,  <code>v-else-if=&quot;boolean&quot;</code>  ,  <code>v-else</code><br>類似 <a href="http://handlebarsjs.com/">Handlebars.js</a> 中的 &#123;&#123;#if boolean&#125;&#125; ,  &#123;&#123;else&#125;&#125;</li>
+<li><strong>v-show</strong><br>形如 <code>v-show=&quot;boolean&quot;</code><br>類似 <code>v-if</code>，不過會保留 DOM 元素本身，只是改變 <code>display: none</code> </li>
+<li><strong>v-for</strong><br>形如 <code>v-for=&quot;item in array&quot;</code><br>類似 <a href="http://handlebarsjs.com/">Handlebars.js</a> 中的 &#123;&#123;#each item&#125;&#125;</li>
+</ul>
+<h2 id="屬性計算-Computed-Propertries"><a href="#屬性計算-Computed-Propertries" class="headerlink" title="屬性計算 Computed Propertries"></a>屬性計算 Computed Propertries</h2><p>我們可以直接利用 <strong>computed</strong> 來幫助我們 <strong>處理雙括號表達式的資料邏輯</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;  <span class="comment">// 當資料改變時，對應更新的變動值</span></span><br><span class="line">  userNum: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> users.length;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p><strong>computed</strong> 有以下特點</p>
+<ul>
+<li>function 本身無法帶入外部參數</li>
+<li>具有資料緩存的功能，不會每次都重新渲染<br>當使用的 data 中的對應值變動，<strong>computed</strong> 裡的值<strong>才會自動更新</strong></li>
+</ul>
+<h2 id="Methods-與事件處理"><a href="#Methods-與事件處理" class="headerlink" title="Methods 與事件處理"></a>Methods 與事件處理</h2><h4 id="methods"><a href="#methods" class="headerlink" title="methods"></a>methods</h4><p>我們可以在 <strong>methods</strong> 裡面定義可被 vue 物件呼叫的 function</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123; <span class="comment">// 可以定義在元件或樣板內使用的 method</span></span><br><span class="line">  addFollow: <span class="function"><span class="keyword">function</span>(<span class="params">user</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>而在 function 裡呼叫的 this 會自動綁定為呼叫這個 function 的物件<br>同時必須注意的是，也就<strong>不能使用 ES6 中的箭頭函數</strong>來定義 method function</p>
+<h4 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a>v-on</h4><p>使用 <code>v-on</code> 語法作事件處理的綁定，縮寫為 <code>@</code> </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"userList"</span> <span class="attr">:class</span>=<span class="string">"&#123; active: isActive &#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"userItem"</span> <span class="attr">v-for</span>=<span class="string">"item in users"</span> <span class="attr">:key</span>=<span class="string">"item.id"</span>&gt;</span>&#123;&#123;item.name&#125;&#125;</span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">void</span> @<span class="attr">click</span>=<span class="string">"setFollow(item)"</span>&gt;</span>Follow<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>再去呼叫我們在 <strong>methods</strong> 中所定義的 function</p>
+<h2 id="雙向綁定"><a href="#雙向綁定" class="headerlink" title="雙向綁定"></a>雙向綁定</h2><h4 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h4><p><code>v-model</code> 可以幫助我們實現雙向綁定，也就是說<strong>去動態同步更改 data 的資料</strong>，在表單呈現上特別好用<br>限用於<code>&lt;input&gt;</code>、<code>&lt;select&gt;</code>和<code>&lt;textarea&gt;</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"msg"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Todos-with-Vue-js"><a href="#Todos-with-Vue-js" class="headerlink" title="Todos with Vue.js"></a>Todos with Vue.js</h2><p>利用前面所提及的各種方法，實作出一個簡單的 todo list</p>
+<iframe height='400' scrolling='no' title='todos with vue.js' src='//codepen.io/veru/embed/JMMXxQ/?height=400&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/veru/pen/JMMXxQ/'>todos with vue.js</a> by Veru (<a href='https://codepen.io/veru'>@veru</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+<ul>
+<li>實作功能<ul>
+<li>可新增/刪除 todo</li>
+<li>可將 todo 標示完成</li>
+<li>顯示未完成的 todo 數量</li>
+<li>可切換不同分頁：全部/未完成/已完成</li>
+<li>快捷鍵：完成所有 todo/刪除已完成 todo</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://cn.vuejs.org/v2/guide/">Vue.js 官方文件</a></li>
+<li><a href="https://www.slideshare.net/kurotanshi/vuejs-62131923">第一次用 Vue.js 就愛上</a></li>
+<li><a href="https://cythilya.github.io/2017/05/21/vue-study-note/">Summer 的 Vue.js 學習筆記總整理</a></li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Vue/" rel="tag">Vue</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5dff41b1c633020012066e80&amp;product=inline-share-buttons' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/350dd70b/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Hexo + GitHub Actions 打造自動部署</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/dc7de635/">
+                <span class="level-item">淺談 AMP (Accelerated Mobile Pages)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'fd2f9e90a257cb6a0b0c',
+        clientSecret: '2e3523d1ba41d26ae4d0bdcfa948075ae26e16fc',
+        id: '6f299ee47c6eb7a34579e9c450043fe6',
+        repo: 'blog',
+        owner: 'wei840220',
+        admin: "wei840220",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Wei">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Wei
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        A Front-End Engineer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Asian, Taiwan</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            12
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            2
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            22
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/wei840220" target="_blank" rel="noopener">
+                追蹤</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/wei840220">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Gmail" href="mailto:wei840220@gmail.com">
+                
+                <i class="fab fa-google"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#前言">
+        <span class="has-mr-6">1</span>
+        <span>前言</span>
+        </a></li><li>
+        <a class="is-flex" href="#進入-Vue-js-世界">
+        <span class="has-mr-6">2</span>
+        <span>進入 Vue.js 世界</span>
+        </a></li><li>
+        <a class="is-flex" href="#資料綁定-Data-Binding">
+        <span class="has-mr-6">3</span>
+        <span>資料綁定 Data Binding</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#data-的作用">
+        <span class="has-mr-6">3.1</span>
+        <span>data 的作用</span>
+        </a></li><li>
+        <a class="is-flex" href="#v-bind">
+        <span class="has-mr-6">3.2</span>
+        <span>v-bind</span>
+        </a></li><li>
+        <a class="is-flex" href="#其他模板語法">
+        <span class="has-mr-6">3.3</span>
+        <span>其他模板語法</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#屬性計算-Computed-Propertries">
+        <span class="has-mr-6">4</span>
+        <span>屬性計算 Computed Propertries</span>
+        </a></li><li>
+        <a class="is-flex" href="#Methods-與事件處理">
+        <span class="has-mr-6">5</span>
+        <span>Methods 與事件處理</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#methods">
+        <span class="has-mr-6">5.1</span>
+        <span>methods</span>
+        </a></li><li>
+        <a class="is-flex" href="#v-on">
+        <span class="has-mr-6">5.2</span>
+        <span>v-on</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#雙向綁定">
+        <span class="has-mr-6">6</span>
+        <span>雙向綁定</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#v-model">
+        <span class="has-mr-6">6.1</span>
+        <span>v-model</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Todos-with-Vue-js">
+        <span class="has-mr-6">7</span>
+        <span>Todos with Vue.js</span>
+        </a></li><li>
+        <a class="is-flex" href="#參考資料">
+        <span class="has-mr-6">8</span>
+        <span>參考資料</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            標籤雲
+        </h3>
+        <a href="/tags/AJAX/" style="font-size: 20px;">AJAX</a> <a href="/tags/AMP/" style="font-size: 10px;">AMP</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI/CD</a> <a href="/tags/Cloudflare/" style="font-size: 10px;">Cloudflare</a> <a href="/tags/Comet/" style="font-size: 10px;">Comet</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Google-Domains/" style="font-size: 10px;">Google Domains</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/HTML5/" style="font-size: 20px;">HTML5</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/NCTUCS/" style="font-size: 10px;">NCTUCS</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/SFTP/" style="font-size: 10px;">SFTP</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Websocket/" style="font-size: 10px;">Websocket</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/747bdc82/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/MnQEFox.png" alt="什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T17:24:59.000Z">2019-12-23</time></div>
+                    <a href="/posts/747bdc82/" class="title has-link-black-ter is-size-6 has-text-weight-normal">什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/350dd70b/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/ecETp6l.png" alt="Hexo + GitHub Actions 打造自動部署">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T15:59:59.000Z">2019-12-22</time></div>
+                    <a href="/posts/350dd70b/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo + GitHub Actions 打造自動部署</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/7694b685/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1920/1*nfvapd86apvGH-hNBYkYuw.png" alt="Vue.js 新手上路">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-02-03T15:06:49.000Z">2018-02-03</time></div>
+                    <a href="/posts/7694b685/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue.js 新手上路</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/dc7de635/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1460/1*ClDLBc3jPb-Rg7h-fC5p_Q.png" alt="淺談 AMP (Accelerated Mobile Pages)">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-10T02:51:00.000Z">2017-12-10</time></div>
+                    <a href="/posts/dc7de635/" class="title has-link-black-ter is-size-6 has-text-weight-normal">淺談 AMP (Accelerated Mobile Pages)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/9d63e457/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://snippetinfo.net/sysdata/doc/4/41f7d6c3f65e1b1a/c291.jpg" alt="善用 Rebase 的 Git 工作流程">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-11-01T02:53:37.000Z">2017-11-01</time></div>
+                    <a href="/posts/9d63e457/" class="title has-link-black-ter is-size-6 has-text-weight-normal">善用 Rebase 的 Git 工作流程</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            標籤雲
+        </h3>
+        <a href="/tags/AJAX/" style="font-size: 20px;">AJAX</a> <a href="/tags/AMP/" style="font-size: 10px;">AMP</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI/CD</a> <a href="/tags/Cloudflare/" style="font-size: 10px;">Cloudflare</a> <a href="/tags/Comet/" style="font-size: 10px;">Comet</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Google-Domains/" style="font-size: 10px;">Google Domains</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/HTML5/" style="font-size: 20px;">HTML5</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/NCTUCS/" style="font-size: 10px;">NCTUCS</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/SFTP/" style="font-size: 10px;">SFTP</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Websocket/" style="font-size: 10px;">Websocket</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/747bdc82/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/MnQEFox.png" alt="什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T17:24:59.000Z">2019-12-23</time></div>
+                    <a href="/posts/747bdc82/" class="title has-link-black-ter is-size-6 has-text-weight-normal">什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/350dd70b/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/ecETp6l.png" alt="Hexo + GitHub Actions 打造自動部署">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T15:59:59.000Z">2019-12-22</time></div>
+                    <a href="/posts/350dd70b/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo + GitHub Actions 打造自動部署</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/7694b685/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1920/1*nfvapd86apvGH-hNBYkYuw.png" alt="Vue.js 新手上路">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-02-03T15:06:49.000Z">2018-02-03</time></div>
+                    <a href="/posts/7694b685/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue.js 新手上路</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/dc7de635/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1460/1*ClDLBc3jPb-Rg7h-fC5p_Q.png" alt="淺談 AMP (Accelerated Mobile Pages)">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-10T02:51:00.000Z">2017-12-10</time></div>
+                    <a href="/posts/dc7de635/" class="title has-link-black-ter is-size-6 has-text-weight-normal">淺談 AMP (Accelerated Mobile Pages)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/9d63e457/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://snippetinfo.net/sysdata/doc/4/41f7d6c3f65e1b1a/c291.jpg" alt="善用 Rebase 的 Git 工作流程">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-11-01T02:53:37.000Z">2017-11-01</time></div>
+                    <a href="/posts/9d63e457/" class="title has-link-black-ter is-size-6 has-text-weight-normal">善用 Rebase 的 Git 工作流程</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Vue.js 新手上路" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Wei&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Shown on GitHub" href="https://github.com/wei840220/blog">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://blog.weitw.net',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

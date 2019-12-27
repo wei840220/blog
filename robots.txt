@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /about/
+Allow: /archives/
+Allow: /categories/
+Allow: /images/
+Allow: /posts/ 
+Allow: /tags/ 
+Disallow: /css/
+Disallow: /js/
+Sitemap: https://blog.weitw.net/sitemap.xml
