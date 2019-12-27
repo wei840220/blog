@@ -579,7 +579,7 @@ figure.highlight .section {
   background-size: 1000px 562.5px;
   background-position: center top;
 }
-#notfound .notfound-404 h2 {
+#notfound h2 {
   font-family: 'Montserrat', sans-serif;
   color: #000;
   font-size: 24px;
@@ -588,7 +588,7 @@ figure.highlight .section {
   margin-top: 0;
   border-bottom: 0;
 }
-#notfound .notfound-404 p {
+#notfound p {
   font-family: 'Montserrat', sans-serif;
   color: #000;
   font-size: 14px;
@@ -596,7 +596,7 @@ figure.highlight .section {
   margin-bottom: 20px;
   margin-top: 0;
 }
-#notfound .notfound-404 a {
+#notfound a {
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   text-decoration: none;
