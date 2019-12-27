@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>學海無涯，回頭是岸</title>
+  <icon>https://blog.weitw.net/icon.png</icon>
+  <subtitle>Wei 的前端技術部落格</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://blog.weitw.net/"/>
+  <updated>2019-12-27T15:25:53.605Z</updated>
+  <id>https://blog.weitw.net/</id>
+  
+  <author>
+    <name>Wei</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS</title>
+    <link href="https://blog.weitw.net/posts/747bdc82/"/>
+    <id>https://blog.weitw.net/posts/747bdc82/</id>
+    <published>2019-12-22T17:24:59.000Z</published>
+    <updated>2019-12-27T15:25:53.605Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;當你使用 Chrome 瀏覽器時，是否曾留意過網址列出現的「&lt;strong&gt;不安全&lt;/strong&gt;」？&lt;/p&gt;
+&lt;p&gt;尤其辛辛苦苦架好網站，甚至加上自訂域名，卻看到那幾個字，顯得格外刺眼——為什麼會出現這個呢？&lt;/p&gt;
+&lt;p&gt;這是因為 Google 鼓勵網站加上 SSL 憑證，那些能以 HTTPS 加密通訊協定存取的網站，就會加上綠色鎖頭字樣！甚至還列入了搜尋演算法的指標中，影響 SEO 排名。&lt;/p&gt;
+&lt;p&gt;話說到這裡，這個 SSL 憑證到底是什麼？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技術心得" scheme="https://blog.weitw.net/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="Cloudflare" scheme="https://blog.weitw.net/tags/Cloudflare/"/>
+    
+      <category term="SSL" scheme="https://blog.weitw.net/tags/SSL/"/>
+    
+      <category term="Google Domains" scheme="https://blog.weitw.net/tags/Google-Domains/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo + GitHub Actions 打造自動部署</title>
+    <link href="https://blog.weitw.net/posts/350dd70b/"/>
+    <id>https://blog.weitw.net/posts/350dd70b/</id>
+    <published>2019-12-22T15:59:59.000Z</published>
+    <updated>2019-12-27T15:25:53.605Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;這篇文章的出現，要從兩年前開始說起，那時候的我才剛開始摸 &lt;a href=&quot;https://hexo.io/zh-tw/index.html&quot;&gt;Hexo&lt;/a&gt;。&lt;br&gt;當時的我比起其他平台，像是 Wordpress / Medium / Logdown 等等諸如此類，更喜歡 markdown 寫作方式，所以興致沖沖地架了個部落格。&lt;/p&gt;
+&lt;p&gt;但是很快地，過了大約一年左右便很少更新：&lt;strong&gt;為什麼會這樣呢？&lt;/strong&gt;&lt;br&gt;終歸一句當然還是懶啦。&lt;/p&gt;
+&lt;p&gt;主要是靜態網頁的佈署步驟太麻煩，必須滿足本地端有 Hexo 檔案的前提，我偏偏又喜歡用 &lt;a href=&quot;https://hackmd.io/&quot;&gt;HackMD&lt;/a&gt; 撰寫，一來一往之間步驟太過繁複。&lt;/p&gt;
+&lt;p&gt;久而久之，這段時間我傾向於使用 HackMD 整理個人筆記，懶得發表技術文章到 blog 上。&lt;br&gt;——直到我注意到 GitHub 推出 &lt;strong&gt;CI/CD 服務&lt;/strong&gt;，能幫助我解決這個麻煩！趁這個機會我打算順便打理 Hexo 架構，把菜鳥時期我搭建的部落格重新打掉，在 2020 前夕超進化！&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技術心得" scheme="https://blog.weitw.net/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="Hexo" scheme="https://blog.weitw.net/tags/Hexo/"/>
+    
+      <category term="Github" scheme="https://blog.weitw.net/tags/Github/"/>
+    
+      <category term="CI/CD" scheme="https://blog.weitw.net/tags/CI-CD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue.js 新手上路</title>
+    <link href="https://blog.weitw.net/posts/7694b685/"/>
+    <id>https://blog.weitw.net/posts/7694b685/</id>
+    <published>2018-02-03T15:06:49.000Z</published>
+    <updated>2019-12-27T15:25:53.605Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在開始學習今天的主題之前，我們要來先討論一下：&lt;strong&gt;為什麼要學框架（Framework）？&lt;/strong&gt;&lt;br&gt;因為很潮正夯特流行嗎？因為業界好找工作嗎？又有什麼是只用 jQuery 辦不到的事情嗎？&lt;/p&gt;
+&lt;p&gt;簡單來說，&lt;strong&gt;jQuery&lt;/strong&gt; 是&lt;strong&gt;以 DOM 元素來觸發功能&lt;/strong&gt;，能幫助我們更簡單的實現網頁上的資料互動及事件處理方法，同時也簡化了許多 AJAX 的操作方法，是設計動畫效果的絕佳利器。&lt;/p&gt;
+&lt;p&gt;然而 &lt;strong&gt;框架（Framework）&lt;/strong&gt; 包括你聽過的三神獸 &lt;strong&gt;Vue&lt;/strong&gt;, &lt;strong&gt;Angular&lt;/strong&gt;, &lt;strong&gt;React&lt;/strong&gt;，都是&lt;strong&gt;以資料來驅動功能&lt;/strong&gt;，適合用來撰寫一些以資料為主體的網頁以及 SPA，能幫助我們更加簡潔地去處理資料邏輯。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技術心得" scheme="https://blog.weitw.net/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="Vue" scheme="https://blog.weitw.net/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>淺談 AMP (Accelerated Mobile Pages)</title>
+    <link href="https://blog.weitw.net/posts/dc7de635/"/>
+    <id>https://blog.weitw.net/posts/dc7de635/</id>
+    <published>2017-12-10T02:51:00.000Z</published>
+    <updated>2019-12-27T15:25:53.605Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;網站速度、內容品質，這些都是 SEO的排名因素，同時也跟用戶體驗息息相關。而 Google 在&lt;a href=&quot;https://googleblog.blogspot.tw/2015/10/introducing-accelerated-mobile-pages.html&quot;&gt;2015 年正式發佈&lt;/a&gt;其獨有的 &lt;strong&gt;AMP&lt;/strong&gt; 框架，中文為 &lt;strong&gt;加速版行動網頁&lt;/strong&gt; 。&lt;/p&gt;
+&lt;p&gt;AMP是 Google 獨有的網頁框架，用來使行動裝置網頁能快速載入。如果你有架設 AMP框架，促進使用者體驗優化，也許會讓該頁面的 rankng 提升 ，同時這個框架也能夠非常有效的提升用戶體驗，未來 AMP將有可能會越來越被重視、且也有可能在搜尋排名中佔有更強的影響力。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.ampproject.org/docs/tutorials/create&quot;&gt;Google 官方網站&lt;/a&gt;上也一步步演示了要如何架設 AMP 網站，主要可分為三大部分&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AMP HTML&lt;/li&gt;
+&lt;li&gt;AMP JS&lt;/li&gt;
+&lt;li&gt;AMP Cache&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="技術心得" scheme="https://blog.weitw.net/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="AMP" scheme="https://blog.weitw.net/tags/AMP/"/>
+    
+      <category term="SEO" scheme="https://blog.weitw.net/tags/SEO/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>善用 Rebase 的 Git 工作流程</title>
+    <link href="https://blog.weitw.net/posts/9d63e457/"/>
+    <id>https://blog.weitw.net/posts/9d63e457/</id>
+    <published>2017-11-01T02:53:37.000Z</published>
+    <updated>2019-12-27T15:25:53.605Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;筆記一下工作上慣用的 Git 工作流程，也大略提及一下 Merge 和 Rebase 的差異。&lt;/p&gt;
+&lt;h2 id=&quot;分支的合併&quot;&gt;&lt;a href=&quot;#分支的合併&quot; class=&quot;headerlink&quot; title=&quot;分支的合併&quot;&gt;&lt;/a&gt;分支的合併&lt;/h2&gt;&lt;p&gt;完成作業的 Topic 分支，最終都會合併到 Integration 分支。&lt;br&gt;合併分支有兩種方法：使用 &lt;strong&gt;merge&lt;/strong&gt; 或 &lt;strong&gt;rebase&lt;/strong&gt;。&lt;br&gt;兩者都是合併歷史記錄，但是根據使用的方法合併後的分支歷史記錄有很大的差別。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/MucvWQq.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技術心得" scheme="https://blog.weitw.net/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="Git" scheme="https://blog.weitw.net/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>資工系學士畢業新鮮人的自白</title>
+    <link href="https://blog.weitw.net/posts/cb4a7f47/"/>
+    <id>https://blog.weitw.net/posts/cb4a7f47/</id>
+    <published>2017-10-19T04:58:02.000Z</published>
+    <updated>2019-12-27T15:25:53.605Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;  當初應屆推本校資工所都沒上&lt;br&gt;  我很煩惱是不是該繼續往資工這條路走 – by young60509&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上週在批踢踢軟體版看到網友  young60509 發表的文章，&lt;a href=&quot;https://www.ptt.cc/bbs/Soft_Job/M.1507876000.A.433.html&quot;&gt;[請益] 該不該往資工走下去…&lt;/a&gt; 作為同屆畢業生我看了也難免有感而發。&lt;/p&gt;
+&lt;p&gt;這篇文章並不會告訴大家，我在資工系修過什麼課、做了什麼事、遇到什麼人、學到什麼樣的東西，主要是想說說就讀資工系的我，甫畢業之初的一些看法。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="生活紀錄" scheme="https://blog.weitw.net/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E9%8C%84/"/>
+    
+    
+      <category term="NCTUCS" scheme="https://blog.weitw.net/tags/NCTUCS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我在社群網路公司實習的日子</title>
+    <link href="https://blog.weitw.net/posts/20d7c148/"/>
+    <id>https://blog.weitw.net/posts/20d7c148/</id>
+    <published>2017-09-24T11:30:00.000Z</published>
+    <updated>2019-12-27T15:25:53.605Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;今年四月，我投遞出人生的第一份履歷。&lt;/p&gt;
+&lt;p&gt;我使用該公司的社群網路服務已有近七年之久，於是當他們釋出前端工程師的實習職位，考慮不過半天、回過神來我已將履歷投至對方信箱——也很幸運地，在經過篩選與面試後，我獲得了暑期實習的合作機會。&lt;/p&gt;
+&lt;p&gt;經過一段時間沈澱之後，我想我是該好好寫篇文章，分享我在短短兩個月的實習過程之中的所見所學。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="生活紀錄" scheme="https://blog.weitw.net/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E9%8C%84/"/>
+    
+    
+      <category term="Frontend" scheme="https://blog.weitw.net/tags/Frontend/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 Sublime SFTP 同步檔案</title>
+    <link href="https://blog.weitw.net/posts/83ff426e/"/>
+    <id>https://blog.weitw.net/posts/83ff426e/</id>
+    <published>2017-08-23T12:26:07.000Z</published>
+    <updated>2019-12-27T15:25:53.605Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在開始介紹 SFTP 以前，我們要先聊聊 &lt;strong&gt;SSH (Secure Shell)&lt;/strong&gt; 協定。沒聽過 SSH 嗎？&lt;/p&gt;
+&lt;p&gt;那你或許有聽過 &lt;strong&gt;Telnet&lt;/strong&gt;，沒錯！就是廣大鄉民們平常用來上 PTT 的連線協定。&lt;br&gt;Telnet 易用，速度又快，只要執行 Telnet 程式來連線到遠端伺服器，使用者輸入帳密後便可以遠端控制主機。&lt;/p&gt;
+&lt;p&gt;但是由於 Telnet 傳輸的資料並未加密，所以容易遭到竊取，後來 SSH 橫空出世，SSH 預設是以金鑰為基礎來驗證及加密傳輸，也可以省去輸入帳號密碼的步驟，大家也就多改用較為安全的 SSH。&lt;/p&gt;
+&lt;h2 id=&quot;SSH（Secure-Shell）&quot;&gt;&lt;a href=&quot;#SSH（Secure-Shell）&quot; class=&quot;headerlink&quot; title=&quot;SSH（Secure Shell）&quot;&gt;&lt;/a&gt;SSH（Secure Shell）&lt;/h2&gt;&lt;p&gt;接下來我們進一步介紹 SSH 協定的運作原理：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;靠加密編碼的演算法，產生一組很長又混亂的字串及檔案&lt;/li&gt;
+&lt;li&gt;這組資料分別為&lt;strong&gt;私鑰 (private key)&lt;/strong&gt; 與&lt;strong&gt;公鑰 (public key)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;接著&lt;strong&gt;將公鑰傳至想要可以免帳號密碼登入的主機上&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;登入主機進行驗證後，主機就會認為你是經過驗證的使用者，就可以登入囉。&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="技術心得" scheme="https://blog.weitw.net/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="Sublime" scheme="https://blog.weitw.net/tags/Sublime/"/>
+    
+      <category term="SFTP" scheme="https://blog.weitw.net/tags/SFTP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>淺談 Polling, Comet, Websocket</title>
+    <link href="https://blog.weitw.net/posts/2b10bcfa/"/>
+    <id>https://blog.weitw.net/posts/2b10bcfa/</id>
+    <published>2017-07-31T05:02:28.000Z</published>
+    <updated>2019-12-27T15:25:53.605Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;現在需要做即時回應與更新的網站已是愈來愈多，大至 Facebook、Twitter，小至即時聊天室的實作等等，在以前使用者只能靠著重新載入網頁才能獲得最新的資訊，但是這樣不但很浪費時間，也會佔用很多不必要的網路資源，並不是一個好的方式。&lt;/p&gt;
+&lt;p&gt;現在要實作這樣的功能，當然不能不知道一些&lt;strong&gt;網路推播技術 Internet Push technology&lt;/strong&gt;——對這個名詞很陌生嗎？讓我們來看看&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%8E%A8%E9%80%81%E6%8A%80%E6%9C%AF&quot;&gt;維基百科&lt;/a&gt;的說明：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;  &lt;strong&gt;推播技術&lt;/strong&gt;，是一種基於 Internet 通訊方式的伺服器推播，其中要求通訊的請求是由發布者或中央伺服器發起。與 pull/get 形成對比，資訊傳輸的相應一般由接收者或用戶端發起。&lt;br&gt;  推動服務通常是基於提前的資訊預設定上。也就是所謂的 publish/subscribe 模型，客戶通過訂閱由伺服器提供各種資訊的頻道，不論何時都可以在其中一個頻道得到新的內容，同樣伺服器通過推播把資訊傳遞給相應的用戶端。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="技術心得" scheme="https://blog.weitw.net/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="HTML5" scheme="https://blog.weitw.net/tags/HTML5/"/>
+    
+      <category term="AJAX" scheme="https://blog.weitw.net/tags/AJAX/"/>
+    
+      <category term="Comet" scheme="https://blog.weitw.net/tags/Comet/"/>
+    
+      <category term="Websocket" scheme="https://blog.weitw.net/tags/Websocket/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTML5 的資料屬性 (data-* attribute)</title>
+    <link href="https://blog.weitw.net/posts/2bb3134/"/>
+    <id>https://blog.weitw.net/posts/2bb3134/</id>
+    <published>2017-07-08T14:55:36.000Z</published>
+    <updated>2019-12-27T15:25:53.605Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;常常在 html 之中看到形如 &lt;code&gt;data-* attribute&lt;/code&gt; 的資料屬性，以下面這段程式碼為例：&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;controls&quot;&lt;/span&gt;  &lt;span class=&quot;attr&quot;&gt;data-uid&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;$&amp;#123;session_user.id&amp;#125;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;like_post&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;s_$&amp;#123;post.favorite&amp;#125;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;do pif-like&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;data-function&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;like&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;$&amp;#123;_(&quot;like&quot;)&amp;#125;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;undo pif-like&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;data-function&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;unlike&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;$&amp;#123;_(&quot;unlike&quot;)&amp;#125;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;這段程式碼之中，有的元素被賦予了 &lt;code&gt;data-uid&lt;/code&gt; 的屬性，有的則是被賦予了 &lt;code&gt;data-function&lt;/code&gt; 的屬性。&lt;/p&gt;
+&lt;p&gt;然而如果你直接 google  &lt;code&gt;data-uid&lt;/code&gt; 或是 &lt;code&gt;data-function&lt;/code&gt; 卻也查不太到這個屬性，這到底是什麼？又有什麼意義或用途呢？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技術心得" scheme="https://blog.weitw.net/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="JavaScript" scheme="https://blog.weitw.net/tags/JavaScript/"/>
+    
+      <category term="jQuery" scheme="https://blog.weitw.net/tags/jQuery/"/>
+    
+      <category term="HTML5" scheme="https://blog.weitw.net/tags/HTML5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gulp 建立自己的自動化程序</title>
+    <link href="https://blog.weitw.net/posts/c606cc8a/"/>
+    <id>https://blog.weitw.net/posts/c606cc8a/</id>
+    <published>2017-04-14T17:44:20.000Z</published>
+    <updated>2019-12-27T15:25:53.605Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在進行網頁開發的時候，過程中可能有許多問題需要處理，以我的開發習慣來舉例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;編譯 SASS, Pug&lt;/li&gt;
+&lt;li&gt;壓縮 &lt;code&gt;.css&lt;/code&gt;, &lt;code&gt;.js&lt;/code&gt; 或圖檔&lt;/li&gt;
+&lt;li&gt;修改完成之後要不斷 F5 重整頁面&lt;/li&gt;
+&lt;li&gt;諸如此類…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;雖然很多工具都可以完成各別的功能，但這樣在開發的過程中反而顯得相當沒效率，這時候我們就可以利用 &lt;a href=&quot;http://gulpjs.com/&quot;&gt;Gulp&lt;/a&gt; 來協助我們建立自己的自動化程序。&lt;/p&gt;
+&lt;h2 id=&quot;安裝全域-Gulp&quot;&gt;&lt;a href=&quot;#安裝全域-Gulp&quot; class=&quot;headerlink&quot; title=&quot;安裝全域 Gulp&quot;&gt;&lt;/a&gt;安裝全域 Gulp&lt;/h2&gt;&lt;p&gt;Gulp 是 Node.js 的套件，所以必須先安裝 Node.js 才可以安裝。&lt;/p&gt;
+&lt;p&gt;檢查 npm 版本，3.0.2 以上才可順利安裝 Gulp&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm --version&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;安裝全域 Gulp&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm install gulp --global&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="技術心得" scheme="https://blog.weitw.net/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="Gulp" scheme="https://blog.weitw.net/tags/Gulp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JSON &amp; AJAX 基本觀念與實作</title>
+    <link href="https://blog.weitw.net/posts/6468559b/"/>
+    <id>https://blog.weitw.net/posts/6468559b/</id>
+    <published>2017-03-31T15:30:07.000Z</published>
+    <updated>2019-12-27T15:25:53.605Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;之前在學校課程中實作資料庫內容的呈現時，是利用 PHP + MySQL 做資料的傳遞，然而在前後端分離的工作模式之中，只要前端從後端 API 那裡接到產出的資料，就可以直接執行頁面上的資料呈現與處理。&lt;/p&gt;
+&lt;p&gt;本文所要實作的內容如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建構 &lt;strong&gt;JSON data file&lt;/strong&gt; 存放預設資料&lt;/li&gt;
+&lt;li&gt;透過 &lt;strong&gt;jQuery 語法 ( Ajax )&lt;/strong&gt; 讀取資料&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也就是說著重在前端接取資料並呈現的部分，不包含後端產生 JSON data file 的工作。&lt;/p&gt;
+&lt;h2 id=&quot;什麼是-JSON&quot;&gt;&lt;a href=&quot;#什麼是-JSON&quot; class=&quot;headerlink&quot; title=&quot;什麼是 JSON&quot;&gt;&lt;/a&gt;什麼是 JSON&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/N4d8OPG.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;JSON（JavaScript Object Notation）&lt;/strong&gt; 是一種輕量級的資料交換語言，後端透過資料庫整理成線上 JSON 格式 ，提供給前端使用，我們可以再經由 jQuery 去存取。&lt;/p&gt;
+&lt;p&gt;JSON 支援的資料型態有 string, number, array, object 等等，主要的宣告與 Javascript 無異，只是有些細節要注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;名稱為字串，必須用成對雙引號 “” 包括&lt;/li&gt;
+&lt;li&gt;值可以是雙引號包括的字串、數字、true、false、null、物件或者是陣列。&lt;/li&gt;
+&lt;li&gt;不支援 JavaScript 的 Date、Error、規則表示式或函式表示。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="技術心得" scheme="https://blog.weitw.net/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="JavaScript" scheme="https://blog.weitw.net/tags/JavaScript/"/>
+    
+      <category term="jQuery" scheme="https://blog.weitw.net/tags/jQuery/"/>
+    
+      <category term="AJAX" scheme="https://blog.weitw.net/tags/AJAX/"/>
+    
+      <category term="JSON" scheme="https://blog.weitw.net/tags/JSON/"/>
+    
+  </entry>
+  
+</feed>
