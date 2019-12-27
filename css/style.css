@@ -540,3 +540,73 @@ figure.highlight .section {
 .gist .file {
   all: initial;
 }
+/* ---------------------------------
+ *         Custom 404 Page
+ * --------------------------------- */
+#notfound {
+  position: relative;
+  min-height: 62vh;
+}
+#notfound .notfound {
+  position: absolute;
+  left: 50%;
+  height: 50%;
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
+  max-width: 410px;
+  width: 100%;
+  text-align: center;
+}
+#notfound .notfound-404 {
+  height: 25vh;
+  position: relative;
+  z-index: -1;
+}
+#notfound .notfound-404 h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20vh;
+  margin: 0px;
+  font-weight: 900;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background: url("/images/cover.jpg") no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 1000px 562.5px;
+  background-position: center top;
+}
+#notfound .notfound-404 h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #000;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 0;
+  border-bottom: 0;
+}
+#notfound .notfound-404 p {
+  font-family: 'Montserrat', sans-serif;
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+#notfound .notfound-404 a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: #3273dc;
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 40px;
+  color: #fff;
+  font-weight: 700;
+  -webkit-box-shadow: 0px 4px 15px -5px #3273dc;
+  box-shadow: 0px 4px 15px -5px #3273dc;
+}
