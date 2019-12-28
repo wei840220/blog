@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/ecETp6l.png">
 <meta property="article:published_time" content="2019-12-22T15:59:59.000Z">
-<meta property="article:modified_time" content="2019-12-28T11:09:51.314Z">
+<meta property="article:modified_time" content="2019-12-28T11:15:51.315Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="Github">
@@ -188,7 +188,7 @@
 <p>  Hexo 是一個快速、簡單且強大的網誌框架。Hexo 使用 Markdown（或其他渲染引擎）解析您的文章，並在幾秒鐘內，透過漂亮的主題產生靜態檔案。</p>
 </blockquote>
 <p>Hexo 使用 Node.js 搭建，速度快且免費，操作也相對簡單，更是支持 Markdown ，也有不少第三方外掛系統。</p>
-<h2 id="準備工作-for-Windows"><a href="#準備工作-for-Windows" class="headerlink" title="準備工作 for Windows"></a>準備工作 for Windows</h2><p>事前需要先安裝以下軟體</p>
+<h2 id="開始使用-Hexo"><a href="#開始使用-Hexo" class="headerlink" title="開始使用 Hexo"></a>開始使用 Hexo</h2><h3 id="準備工作-for-Windows"><a href="#準備工作-for-Windows" class="headerlink" title="準備工作 for Windows"></a>準備工作 for Windows</h3><p>事前需要先安裝以下軟體</p>
 <ul>
 <li><a href="https://nodejs.org/en/">Node.js</a></li>
 <li><a href="https://desktop.github.com/">Github</a><ul>
@@ -201,14 +201,14 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 
 <p>透過 npm 就可以順利完成 Hexo 的安裝了</p>
-<h2 id="開始使用-Hexo"><a href="#開始使用-Hexo" class="headerlink" title="開始使用 Hexo"></a>開始使用 Hexo</h2><p>接下來，我們要進行初始化和安裝，在 Shell 鍵入</p>
+<h3 id="初始化和安裝"><a href="#初始化和安裝" class="headerlink" title="初始化和安裝"></a>初始化和安裝</h3><p>接下來，我們要進行初始化和安裝，在 Shell 鍵入</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
 
 <p>跑完後，會在該資料夾底下新增所需要的檔案：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
 
 <p>等它跑完就可以開始寫新文章、架 blog 了，初步的建置就是如此簡單！</p>
-<h2 id="Hexo-基本指令"><a href="#Hexo-基本指令" class="headerlink" title="Hexo 基本指令"></a>Hexo 基本指令</h2><h3 id="建立新文章"><a href="#建立新文章" class="headerlink" title="建立新文章"></a>建立新文章</h3><p>在 Shell 鍵入以下訊息</p>
+<h3 id="建立新文章"><a href="#建立新文章" class="headerlink" title="建立新文章"></a>建立新文章</h3><p>在 Shell 鍵入以下訊息</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"postName"</span>  <span class="comment"># 建立一個新的文章</span></span><br></pre></td></tr></table></figure>
 
 <p>新文章的格式是 markdown，可以到 <code>source/_post/postName.md</code> 去修改</p>
@@ -265,7 +265,7 @@
 <p>我的 <code>main.yml</code> 設定如下</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">Blog</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">10.</span><span class="string">x</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">node-version:</span> <span class="string">"10.x"</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">Hexo</span> <span class="string">env</span></span><br><span class="line">      <span class="attr">env:</span></span><br><span class="line">        <span class="attr">HEXO_DEPLOY_PRI:</span> <span class="string">$&#123;&#123;secrets.HEXO_DEPLOY_PRI&#125;&#125;</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="comment"># set up private key for deploy</span></span><br><span class="line">        <span class="string">mkdir</span> <span class="string">-p</span> <span class="string">~/.ssh/</span></span><br><span class="line">        <span class="string">echo</span> <span class="string">"$HEXO_DEPLOY_PRI"</span> <span class="string">&gt;</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">        <span class="string">chmod</span> <span class="number">600</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">        <span class="string">ssh-keyscan</span> <span class="string">github.com</span> <span class="string">&gt;&gt;</span> <span class="string">~/.ssh/known_hosts</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">'使用者帳號'</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">'使用者信箱'</span></span><br><span class="line">        <span class="comment"># install dependencies</span></span><br><span class="line">        <span class="string">npm</span> <span class="string">i</span> <span class="string">-g</span> <span class="string">hexo-cli</span></span><br><span class="line">        <span class="string">npm</span> <span class="string">i</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="comment"># generate and depoly</span></span><br><span class="line">        <span class="string">hexo</span> <span class="string">g</span> <span class="string">-d</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="確認-workflows-生效"><a href="#確認-workflows-生效" class="headerlink" title="確認 workflows 生效"></a>確認 workflows 生效</h3><p>把 <code>main.yml</code> 推上 <code>workflows/</code> 後，再一次回到 Actions 確認</p>
+<p>把 <code>main.yml</code> 推上 <code>workflows/</code> 後，再一次回到 Actions 確認 workflows </p>
 <p><img src="https://i.imgur.com/BVXrSPn.png" alt=""></p>
 <p>本地端檔案也要記得同步 <code>main.yml</code> 建立時推上去的 commit</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote update</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
@@ -488,92 +488,88 @@
         <span class="has-mr-6">2</span>
         <span>什麼是 Hexo</span>
         </a></li><li>
-        <a class="is-flex" href="#準備工作-for-Windows">
+        <a class="is-flex" href="#開始使用-Hexo">
         <span class="has-mr-6">3</span>
+        <span>開始使用 Hexo</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#準備工作-for-Windows">
+        <span class="has-mr-6">3.1</span>
         <span>準備工作 for Windows</span>
         </a></li><li>
-        <a class="is-flex" href="#開始使用-Hexo">
-        <span class="has-mr-6">4</span>
-        <span>開始使用 Hexo</span>
+        <a class="is-flex" href="#初始化和安裝">
+        <span class="has-mr-6">3.2</span>
+        <span>初始化和安裝</span>
         </a></li><li>
-        <a class="is-flex" href="#Hexo-基本指令">
-        <span class="has-mr-6">5</span>
-        <span>Hexo 基本指令</span>
-        </a><ul class="menu-list"><li>
         <a class="is-flex" href="#建立新文章">
-        <span class="has-mr-6">5.1</span>
+        <span class="has-mr-6">3.3</span>
         <span>建立新文章</span>
         </a></li><li>
         <a class="is-flex" href="#預覽-blog">
-        <span class="has-mr-6">5.2</span>
+        <span class="has-mr-6">3.4</span>
         <span>預覽 blog</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#使用-Hexo-Deploy-部署">
-        <span class="has-mr-6">6</span>
+        <span class="has-mr-6">4</span>
         <span>使用 Hexo Deploy 部署</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#安裝-hexo-deployer-git">
-        <span class="has-mr-6">6.1</span>
+        <span class="has-mr-6">4.1</span>
         <span>安裝 hexo-deployer-git</span>
         </a></li><li>
         <a class="is-flex" href="#修改-config-yml">
-        <span class="has-mr-6">6.2</span>
+        <span class="has-mr-6">4.2</span>
         <span>修改 _config.yml</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#使用-GitHub-Actions-實現-CI-CD">
-        <span class="has-mr-6">7</span>
+        <span class="has-mr-6">5</span>
         <span>使用 GitHub Actions 實現 CI/CD</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#什麼是-CI-CD">
-        <span class="has-mr-6">7.1</span>
+        <span class="has-mr-6">5.1</span>
         <span>什麼是 CI/CD</span>
         </a></li><li>
         <a class="is-flex" href="#建立-CI-CD-流程雛形">
-        <span class="has-mr-6">7.2</span>
+        <span class="has-mr-6">5.2</span>
         <span>建立 CI / CD 流程雛形</span>
         </a></li><li>
         <a class="is-flex" href="#把-Hexo-原始碼推送到-GitHub">
-        <span class="has-mr-6">7.3</span>
+        <span class="has-mr-6">5.3</span>
         <span>把 Hexo 原始碼推送到 GitHub</span>
         </a></li><li>
         <a class="is-flex" href="#建立-SSH-Key">
-        <span class="has-mr-6">7.4</span>
+        <span class="has-mr-6">5.4</span>
         <span>建立 SSH Key</span>
         </a></li><li>
         <a class="is-flex" href="#修改-config-yml-1">
-        <span class="has-mr-6">7.5</span>
+        <span class="has-mr-6">5.5</span>
         <span>修改 _config.yml</span>
         </a></li><li>
         <a class="is-flex" href="#設定-GitHub-Actions">
-        <span class="has-mr-6">7.6</span>
+        <span class="has-mr-6">5.6</span>
         <span>設定 GitHub Actions</span>
         </a></li><li>
-        <a class="is-flex" href="#確認-workflows-生效">
-        <span class="has-mr-6">7.7</span>
-        <span>確認 workflows 生效</span>
-        </a></li><li>
         <a class="is-flex" href="#blog-變更生效">
-        <span class="has-mr-6">7.8</span>
+        <span class="has-mr-6">5.7</span>
         <span>blog 變更生效</span>
         </a></li><li>
         <a class="is-flex" href="#備份原始碼">
-        <span class="has-mr-6">7.9</span>
+        <span class="has-mr-6">5.8</span>
         <span>備份原始碼</span>
         </a></li><li>
         <a class="is-flex" href="#線上發文">
-        <span class="has-mr-6">7.10</span>
+        <span class="has-mr-6">5.9</span>
         <span>線上發文</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#踩坑經歷">
-        <span class="has-mr-6">8</span>
+        <span class="has-mr-6">6</span>
         <span>踩坑經歷</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#更改佈景主題">
-        <span class="has-mr-6">8.1</span>
+        <span class="has-mr-6">6.1</span>
         <span>更改佈景主題</span>
         </a></li><li>
         <a class="is-flex" href="#設定自定義域名">
-        <span class="has-mr-6">8.2</span>
+        <span class="has-mr-6">6.2</span>
         <span>設定自定義域名</span>
         </a></li></ul></li></ul>
             </div>
