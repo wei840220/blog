@@ -13,13 +13,13 @@
     <meta name="description" content="前言當你使用 Chrome 瀏覽器時，是否曾留意過網址列出現的「不安全」？ 尤其辛辛苦苦架好網站，甚至加上自訂域名，卻看到那幾個字，顯得格外刺眼——為什麼會出現這個呢？ 這是因為 Google 鼓勵網站加上 SSL 憑證，那些能以 HTTPS 加密通訊協定存取的網站，就會加上綠色鎖頭字樣！甚至還列入了搜尋演算法的指標中，影響 SEO 排名。 話說到這裡，這個 SSL 憑證到底是什麼？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS">
-<meta property="og:url" content="https://blog.weitw.net/posts/747bdc82/index.html">
+<meta property="og:url" content="https://blog.wjhuang.com/posts/747bdc82/index.html">
 <meta property="og:site_name" content="學海無涯，回頭是岸">
 <meta property="og:description" content="前言當你使用 Chrome 瀏覽器時，是否曾留意過網址列出現的「不安全」？ 尤其辛辛苦苦架好網站，甚至加上自訂域名，卻看到那幾個字，顯得格外刺眼——為什麼會出現這個呢？ 這是因為 Google 鼓勵網站加上 SSL 憑證，那些能以 HTTPS 加密通訊協定存取的網站，就會加上綠色鎖頭字樣！甚至還列入了搜尋演算法的指標中，影響 SEO 排名。 話說到這裡，這個 SSL 憑證到底是什麼？">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/MnQEFox.png">
 <meta property="article:published_time" content="2019-12-22T17:24:59.000Z">
-<meta property="article:modified_time" content="2021-02-08T17:32:47.870Z">
+<meta property="article:modified_time" content="2021-02-09T06:49:06.740Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="Cloudflare">
 <meta property="article:tag" content="SSL">
@@ -250,11 +250,6 @@
         
         
         
-        
-<div class="sharethis-inline-share-buttons"></div>
-<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5dff41b1c633020012066e80&amp;product=inline-share-buttons' async='async'></script>
-
-        
     </div>
 </div>
 
@@ -289,24 +284,23 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">評論</h3>
         
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js"></script>
 <script>
-    var gitalk = new Gitalk({
-        clientID: 'fd2f9e90a257cb6a0b0c',
-        clientSecret: '2e3523d1ba41d26ae4d0bdcfa948075ae26e16fc',
-        id: '74ce790ae409cb1ba85b2e77a3a1fdc2',
-        repo: 'blog',
-        owner: 'wei840220',
-        admin: "wei840220",
-        createIssueManually: false,
-        distractionFreeMode: false
-    })
-    gitalk.render('comment-container')
+    var disqus_config = function () {
+        this.page.url = 'https://blog.wjhuang.com/posts/747bdc82/';
+        this.page.identifier = 'posts/747bdc82/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'learning-sea' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
-
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
     </div>
 </div>
 </div>
@@ -770,7 +764,7 @@
 <script>
 var IcarusThemeSettings = {
     site: {
-        url: 'https://blog.weitw.net',
+        url: 'https://blog.wjhuang.com',
         external_link: {"enable":true,"exclude":[]}
     },
     article: {

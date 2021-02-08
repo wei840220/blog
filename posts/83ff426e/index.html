@@ -13,13 +13,13 @@
     <meta name="description" content="前言在開始介紹 SFTP 以前，我們要先聊聊 SSH (Secure Shell) 協定。沒聽過 SSH 嗎？ 那你或許有聽過 Telnet，沒錯！就是廣大鄉民們平常用來上 PTT 的連線協定。Telnet 易用，速度又快，只要執行 Telnet 程式來連線到遠端伺服器，使用者輸入帳密後便可以遠端控制主機。 但是由於 Telnet 傳輸的資料並未加密，所以容易遭到竊取，後來 SSH 橫空出世，SS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Sublime SFTP 同步檔案">
-<meta property="og:url" content="https://blog.weitw.net/posts/83ff426e/index.html">
+<meta property="og:url" content="https://blog.wjhuang.com/posts/83ff426e/index.html">
 <meta property="og:site_name" content="學海無涯，回頭是岸">
 <meta property="og:description" content="前言在開始介紹 SFTP 以前，我們要先聊聊 SSH (Secure Shell) 協定。沒聽過 SSH 嗎？ 那你或許有聽過 Telnet，沒錯！就是廣大鄉民們平常用來上 PTT 的連線協定。Telnet 易用，速度又快，只要執行 Telnet 程式來連線到遠端伺服器，使用者輸入帳密後便可以遠端控制主機。 但是由於 Telnet 傳輸的資料並未加密，所以容易遭到竊取，後來 SSH 橫空出世，SS">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/mYb9TQo.png">
 <meta property="article:published_time" content="2017-08-23T12:26:07.000Z">
-<meta property="article:modified_time" content="2021-02-08T17:32:47.870Z">
+<meta property="article:modified_time" content="2021-02-09T06:49:06.740Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="Sublime">
 <meta property="article:tag" content="SFTP">
@@ -272,11 +272,6 @@
         
         
         
-        
-<div class="sharethis-inline-share-buttons"></div>
-<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5dff41b1c633020012066e80&amp;product=inline-share-buttons' async='async'></script>
-
-        
     </div>
 </div>
 
@@ -311,24 +306,23 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">評論</h3>
         
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js"></script>
 <script>
-    var gitalk = new Gitalk({
-        clientID: 'fd2f9e90a257cb6a0b0c',
-        clientSecret: '2e3523d1ba41d26ae4d0bdcfa948075ae26e16fc',
-        id: '6fdb64223e1b30c4022bf695d69592af',
-        repo: 'blog',
-        owner: 'wei840220',
-        admin: "wei840220",
-        createIssueManually: false,
-        distractionFreeMode: false
-    })
-    gitalk.render('comment-container')
+    var disqus_config = function () {
+        this.page.url = 'https://blog.wjhuang.com/posts/83ff426e/';
+        this.page.identifier = 'posts/83ff426e/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'learning-sea' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
-
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
     </div>
 </div>
 </div>
@@ -784,7 +778,7 @@
 <script>
 var IcarusThemeSettings = {
     site: {
-        url: 'https://blog.weitw.net',
+        url: 'https://blog.wjhuang.com',
         external_link: {"enable":true,"exclude":[]}
     },
     article: {

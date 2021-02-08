@@ -13,13 +13,13 @@
     <meta name="description" content="前言這篇文章的出現，要從兩年前開始說起，那時候的我才剛開始摸 Hexo。當時的我比起其他平台，像是 Wordpress &#x2F; Medium &#x2F; Logdown 等等諸如此類，更喜歡 markdown 寫作方式，所以興致沖沖地架了個部落格。 但是很快地，過了大約一年左右便很少更新：為什麼會這樣呢？終歸一句當然還是懶啦。 主要是靜態網頁的佈署步驟太麻煩，必須滿足本地端有 Hexo 檔案的前提，我偏偏又喜">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo + GitHub Actions 打造自動部署">
-<meta property="og:url" content="https://blog.weitw.net/posts/350dd70b/index.html">
+<meta property="og:url" content="https://blog.wjhuang.com/posts/350dd70b/index.html">
 <meta property="og:site_name" content="學海無涯，回頭是岸">
 <meta property="og:description" content="前言這篇文章的出現，要從兩年前開始說起，那時候的我才剛開始摸 Hexo。當時的我比起其他平台，像是 Wordpress &#x2F; Medium &#x2F; Logdown 等等諸如此類，更喜歡 markdown 寫作方式，所以興致沖沖地架了個部落格。 但是很快地，過了大約一年左右便很少更新：為什麼會這樣呢？終歸一句當然還是懶啦。 主要是靜態網頁的佈署步驟太麻煩，必須滿足本地端有 Hexo 檔案的前提，我偏偏又喜">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/ecETp6l.png">
 <meta property="article:published_time" content="2019-12-22T15:59:59.000Z">
-<meta property="article:modified_time" content="2021-02-08T17:32:47.870Z">
+<meta property="article:modified_time" content="2021-02-09T06:49:06.740Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="Github">
@@ -243,13 +243,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -f github-deploy-key <span class="comment"># 然後三次 Enter</span></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>原始碼專案<br>到 <strong>Setings</strong> 的 <strong>Secrets</strong> 去 Add a new secret</p>
+<li><p>原始碼專案<br>到 <strong>Settings</strong> 的 <strong>Secrets</strong> 去 Add a new secret</p>
 <ul>
 <li>Name 輸入 <code>HEXO_DEPLOY_PRI</code></li>
 <li>Value 填上私鑰 <code>github-actions-deploy</code> 的內容</li>
 </ul>
 </li>
-<li><p>靜態網頁專案<br>到 <strong>Setings</strong> 的 <strong>Deploy keys</strong></p>
+<li><p>靜態網頁專案<br>到 <strong>Settings</strong> 的 <strong>Deploy keys</strong></p>
 <ul>
 <li>Title 輸入 <code>HEXO_DEPLOY_PUB</code></li>
 <li>Key 填上公鑰 <code>github-actions-deploy.pub</code> 的內容</li>
@@ -302,11 +302,6 @@
         
         
         
-        
-<div class="sharethis-inline-share-buttons"></div>
-<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5dff41b1c633020012066e80&amp;product=inline-share-buttons' async='async'></script>
-
-        
     </div>
 </div>
 
@@ -341,24 +336,23 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">評論</h3>
         
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js"></script>
 <script>
-    var gitalk = new Gitalk({
-        clientID: 'fd2f9e90a257cb6a0b0c',
-        clientSecret: '2e3523d1ba41d26ae4d0bdcfa948075ae26e16fc',
-        id: 'f52f5c23cf7fcafc9cf9790e04b694f7',
-        repo: 'blog',
-        owner: 'wei840220',
-        admin: "wei840220",
-        createIssueManually: false,
-        distractionFreeMode: false
-    })
-    gitalk.render('comment-container')
+    var disqus_config = function () {
+        this.page.url = 'https://blog.wjhuang.com/posts/350dd70b/';
+        this.page.identifier = 'posts/350dd70b/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'learning-sea' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
-
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
     </div>
 </div>
 </div>
@@ -866,7 +860,7 @@
 <script>
 var IcarusThemeSettings = {
     site: {
-        url: 'https://blog.weitw.net',
+        url: 'https://blog.wjhuang.com',
         external_link: {"enable":true,"exclude":[]}
     },
     article: {

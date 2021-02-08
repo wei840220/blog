@@ -13,13 +13,13 @@
     <meta name="description" content="前言常常在 html 之中看到形如 data-* attribute 的資料屬性，以下面這段程式碼為例： 123456&lt;div class&#x3D;&quot;controls&quot;  data-uid&#x3D;&quot;$&amp;#123;session_user.id&amp;#125;&quot;&gt;    &lt;span id&#x3D;&quot;like_post&quot; class&#x3D;&quot;s_$&amp;#123;post.favorite&amp;#125;&quot;&gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTML5 的資料屬性 (data-* attribute)">
-<meta property="og:url" content="https://blog.weitw.net/posts/2bb3134/index.html">
+<meta property="og:url" content="https://blog.wjhuang.com/posts/2bb3134/index.html">
 <meta property="og:site_name" content="學海無涯，回頭是岸">
 <meta property="og:description" content="前言常常在 html 之中看到形如 data-* attribute 的資料屬性，以下面這段程式碼為例： 123456&lt;div class&#x3D;&quot;controls&quot;  data-uid&#x3D;&quot;$&amp;#123;session_user.id&amp;#125;&quot;&gt;    &lt;span id&#x3D;&quot;like_post&quot; class&#x3D;&quot;s_$&amp;#123;post.favorite&amp;#125;&quot;&gt;">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/html5-logo.png">
 <meta property="article:published_time" content="2017-07-08T14:55:36.000Z">
-<meta property="article:modified_time" content="2021-02-08T17:32:47.870Z">
+<meta property="article:modified_time" content="2021-02-09T06:49:06.740Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="jQuery">
@@ -214,11 +214,6 @@
         
         
         
-        
-<div class="sharethis-inline-share-buttons"></div>
-<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5dff41b1c633020012066e80&amp;product=inline-share-buttons' async='async'></script>
-
-        
     </div>
 </div>
 
@@ -253,24 +248,23 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">評論</h3>
         
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js"></script>
 <script>
-    var gitalk = new Gitalk({
-        clientID: 'fd2f9e90a257cb6a0b0c',
-        clientSecret: '2e3523d1ba41d26ae4d0bdcfa948075ae26e16fc',
-        id: '10427fc34bf9797b552396c05b4edb47',
-        repo: 'blog',
-        owner: 'wei840220',
-        admin: "wei840220",
-        createIssueManually: false,
-        distractionFreeMode: false
-    })
-    gitalk.render('comment-container')
+    var disqus_config = function () {
+        this.page.url = 'https://blog.wjhuang.com/posts/2bb3134/';
+        this.page.identifier = 'posts/2bb3134/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'learning-sea' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
-
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
     </div>
 </div>
 </div>
@@ -718,7 +712,7 @@
 <script>
 var IcarusThemeSettings = {
     site: {
-        url: 'https://blog.weitw.net',
+        url: 'https://blog.wjhuang.com',
         external_link: {"enable":true,"exclude":[]}
     },
     article: {

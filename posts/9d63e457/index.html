@@ -13,13 +13,13 @@
     <meta name="description" content="前言筆記一下工作上慣用的 Git 工作流程，也大略提及一下 Merge 和 Rebase 的差異。 分支的合併完成作業的 Topic 分支，最終都會合併到 Integration 分支。合併分支有兩種方法：使用 merge 或 rebase。兩者都是合併歷史記錄，但是根據使用的方法合併後的分支歷史記錄有很大的差別。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="善用 Rebase 的 Git 工作流程">
-<meta property="og:url" content="https://blog.weitw.net/posts/9d63e457/index.html">
+<meta property="og:url" content="https://blog.wjhuang.com/posts/9d63e457/index.html">
 <meta property="og:site_name" content="學海無涯，回頭是岸">
 <meta property="og:description" content="前言筆記一下工作上慣用的 Git 工作流程，也大略提及一下 Merge 和 Rebase 的差異。 分支的合併完成作業的 Topic 分支，最終都會合併到 Integration 分支。合併分支有兩種方法：使用 merge 或 rebase。兩者都是合併歷史記錄，但是根據使用的方法合併後的分支歷史記錄有很大的差別。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://snippetinfo.net/sysdata/doc/4/41f7d6c3f65e1b1a/c291.jpg">
 <meta property="article:published_time" content="2017-11-01T02:53:37.000Z">
-<meta property="article:modified_time" content="2021-02-08T17:32:47.870Z">
+<meta property="article:modified_time" content="2021-02-09T06:49:06.740Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -210,11 +210,6 @@
         
         
         
-        
-<div class="sharethis-inline-share-buttons"></div>
-<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5dff41b1c633020012066e80&amp;product=inline-share-buttons' async='async'></script>
-
-        
     </div>
 </div>
 
@@ -249,24 +244,23 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">評論</h3>
         
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js"></script>
 <script>
-    var gitalk = new Gitalk({
-        clientID: 'fd2f9e90a257cb6a0b0c',
-        clientSecret: '2e3523d1ba41d26ae4d0bdcfa948075ae26e16fc',
-        id: 'a960694ae7400c98e8e2041ada4d3660',
-        repo: 'blog',
-        owner: 'wei840220',
-        admin: "wei840220",
-        createIssueManually: false,
-        distractionFreeMode: false
-    })
-    gitalk.render('comment-container')
+    var disqus_config = function () {
+        this.page.url = 'https://blog.wjhuang.com/posts/9d63e457/';
+        this.page.identifier = 'posts/9d63e457/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'learning-sea' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
-
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
     </div>
 </div>
 </div>
@@ -718,7 +712,7 @@
 <script>
 var IcarusThemeSettings = {
     site: {
-        url: 'https://blog.weitw.net',
+        url: 'https://blog.wjhuang.com',
         external_link: {"enable":true,"exclude":[]}
     },
     article: {

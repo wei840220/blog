@@ -13,13 +13,13 @@
     <meta name="description" content="一句話簡單來說：外向、樂於思考，同時富有行動力。 喜歡閱讀、攝影、聽音樂、看電影還有四處旅行。 踏入前端領域不久，努力吸收天地間的養分，以這個 blog 記錄自己學習的一步一腳印。除此之外，也會分享一些對生活大大小小事物的個人觀點 :)  Photo by Mohamed Masaau on Unsplash  學海無涯，回頭是岸並不是指放棄學習──而是感嘆在這個時代裡，學習的管道比比皆是，然而知">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hello, I&#39;m Wei">
-<meta property="og:url" content="https://blog.weitw.net/about/index.html">
+<meta property="og:url" content="https://blog.wjhuang.com/about/index.html">
 <meta property="og:site_name" content="學海無涯，回頭是岸">
 <meta property="og:description" content="一句話簡單來說：外向、樂於思考，同時富有行動力。 喜歡閱讀、攝影、聽音樂、看電影還有四處旅行。 踏入前端領域不久，努力吸收天地間的養分，以這個 blog 記錄自己學習的一步一腳印。除此之外，也會分享一些對生活大大小小事物的個人觀點 :)  Photo by Mohamed Masaau on Unsplash  學海無涯，回頭是岸並不是指放棄學習──而是感嘆在這個時代裡，學習的管道比比皆是，然而知">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://blog.weitw.net/images/og_image.png">
+<meta property="og:image" content="https://blog.wjhuang.com/images/og_image.png">
 <meta property="article:published_time" content="2019-12-22T11:46:47.000Z">
-<meta property="article:modified_time" content="2021-02-08T17:32:47.870Z">
+<meta property="article:modified_time" content="2021-02-09T06:49:06.740Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="前端">
 <meta property="article:tag" content="frontend">
@@ -27,9 +27,9 @@
 <meta property="article:tag" content="HTML5">
 <meta property="article:tag" content="CSS3">
 <meta property="article:tag" content="Vue">
-<meta property="article:tag" content="jQuery">
+<meta property="article:tag" content="RjQuery">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.weitw.net/images/og_image.png">
+<meta name="twitter:image" content="https://blog.wjhuang.com/images/og_image.png">
 
 
 
@@ -172,11 +172,6 @@
         
         
         
-        
-<div class="sharethis-inline-share-buttons"></div>
-<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5dff41b1c633020012066e80&amp;product=inline-share-buttons' async='async'></script>
-
-        
     </div>
 </div>
 
@@ -190,24 +185,23 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">評論</h3>
         
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js"></script>
 <script>
-    var gitalk = new Gitalk({
-        clientID: 'fd2f9e90a257cb6a0b0c',
-        clientSecret: '2e3523d1ba41d26ae4d0bdcfa948075ae26e16fc',
-        id: 'a7224db13f3a49096aa27c1876d1a947',
-        repo: 'blog',
-        owner: 'wei840220',
-        admin: "wei840220",
-        createIssueManually: false,
-        distractionFreeMode: false
-    })
-    gitalk.render('comment-container')
+    var disqus_config = function () {
+        this.page.url = 'https://blog.wjhuang.com/about/index.html';
+        this.page.identifier = 'about/index.html';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'learning-sea' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
-
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
     </div>
 </div>
 </div>
@@ -824,7 +818,7 @@
 <script>
 var IcarusThemeSettings = {
     site: {
-        url: 'https://blog.weitw.net',
+        url: 'https://blog.wjhuang.com',
         external_link: {"enable":true,"exclude":[]}
     },
     article: {

@@ -13,13 +13,13 @@
     <meta name="description" content="前言在進行網頁開發的時候，過程中可能有許多問題需要處理，以我的開發習慣來舉例：  編譯 SASS, Pug 壓縮 .css, .js 或圖檔 修改完成之後要不斷 F5 重整頁面 諸如此類…  雖然很多工具都可以完成各別的功能，但這樣在開發的過程中反而顯得相當沒效率，這時候我們就可以利用 Gulp 來協助我們建立自己的自動化程序。 安裝全域 GulpGulp 是 Node.js 的套件，所以必須先安">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gulp 建立自己的自動化程序">
-<meta property="og:url" content="https://blog.weitw.net/posts/c606cc8a/index.html">
+<meta property="og:url" content="https://blog.wjhuang.com/posts/c606cc8a/index.html">
 <meta property="og:site_name" content="學海無涯，回頭是岸">
 <meta property="og:description" content="前言在進行網頁開發的時候，過程中可能有許多問題需要處理，以我的開發習慣來舉例：  編譯 SASS, Pug 壓縮 .css, .js 或圖檔 修改完成之後要不斷 F5 重整頁面 諸如此類…  雖然很多工具都可以完成各別的功能，但這樣在開發的過程中反而顯得相當沒效率，這時候我們就可以利用 Gulp 來協助我們建立自己的自動化程序。 安裝全域 GulpGulp 是 Node.js 的套件，所以必須先安">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/OfLUYJm.png">
 <meta property="article:published_time" content="2017-04-14T17:44:20.000Z">
-<meta property="article:modified_time" content="2021-02-08T17:32:47.870Z">
+<meta property="article:modified_time" content="2021-02-09T06:49:06.740Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="Gulp">
 <meta name="twitter:card" content="summary">
@@ -236,11 +236,6 @@
         
         
         
-        
-<div class="sharethis-inline-share-buttons"></div>
-<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5dff41b1c633020012066e80&amp;product=inline-share-buttons' async='async'></script>
-
-        
     </div>
 </div>
 
@@ -275,24 +270,23 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">評論</h3>
         
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js"></script>
 <script>
-    var gitalk = new Gitalk({
-        clientID: 'fd2f9e90a257cb6a0b0c',
-        clientSecret: '2e3523d1ba41d26ae4d0bdcfa948075ae26e16fc',
-        id: '8f15b885b7cf1d6507c39e06741b67f3',
-        repo: 'blog',
-        owner: 'wei840220',
-        admin: "wei840220",
-        createIssueManually: false,
-        distractionFreeMode: false
-    })
-    gitalk.render('comment-container')
+    var disqus_config = function () {
+        this.page.url = 'https://blog.wjhuang.com/posts/c606cc8a/';
+        this.page.identifier = 'posts/c606cc8a/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'learning-sea' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
-
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
     </div>
 </div>
 </div>
@@ -752,7 +746,7 @@
 <script>
 var IcarusThemeSettings = {
     site: {
-        url: 'https://blog.weitw.net',
+        url: 'https://blog.wjhuang.com',
         external_link: {"enable":true,"exclude":[]}
     },
     article: {

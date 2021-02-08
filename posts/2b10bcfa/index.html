@@ -13,13 +13,13 @@
     <meta name="description" content="前言現在需要做即時回應與更新的網站已是愈來愈多，大至 Facebook、Twitter，小至即時聊天室的實作等等，在以前使用者只能靠著重新載入網頁才能獲得最新的資訊，但是這樣不但很浪費時間，也會佔用很多不必要的網路資源，並不是一個好的方式。 現在要實作這樣的功能，當然不能不知道一些網路推播技術 Internet Push technology——對這個名詞很陌生嗎？讓我們來看看維基百科的說明：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="淺談 Polling, Comet, Websocket">
-<meta property="og:url" content="https://blog.weitw.net/posts/2b10bcfa/index.html">
+<meta property="og:url" content="https://blog.wjhuang.com/posts/2b10bcfa/index.html">
 <meta property="og:site_name" content="學海無涯，回頭是岸">
 <meta property="og:description" content="前言現在需要做即時回應與更新的網站已是愈來愈多，大至 Facebook、Twitter，小至即時聊天室的實作等等，在以前使用者只能靠著重新載入網頁才能獲得最新的資訊，但是這樣不但很浪費時間，也會佔用很多不必要的網路資源，並不是一個好的方式。 現在要實作這樣的功能，當然不能不知道一些網路推播技術 Internet Push technology——對這個名詞很陌生嗎？讓我們來看看維基百科的說明：">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/APW1lja.png">
 <meta property="article:published_time" content="2017-07-31T05:02:28.000Z">
-<meta property="article:modified_time" content="2021-02-08T17:32:47.870Z">
+<meta property="article:modified_time" content="2021-02-09T06:49:06.740Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="HTML5">
 <meta property="article:tag" content="AJAX">
@@ -245,11 +245,6 @@
         
         
         
-        
-<div class="sharethis-inline-share-buttons"></div>
-<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5dff41b1c633020012066e80&amp;product=inline-share-buttons' async='async'></script>
-
-        
     </div>
 </div>
 
@@ -284,24 +279,23 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">評論</h3>
         
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js"></script>
 <script>
-    var gitalk = new Gitalk({
-        clientID: 'fd2f9e90a257cb6a0b0c',
-        clientSecret: '2e3523d1ba41d26ae4d0bdcfa948075ae26e16fc',
-        id: 'cc8f8c62ed8f192f795c3c0ccd4bda07',
-        repo: 'blog',
-        owner: 'wei840220',
-        admin: "wei840220",
-        createIssueManually: false,
-        distractionFreeMode: false
-    })
-    gitalk.render('comment-container')
+    var disqus_config = function () {
+        this.page.url = 'https://blog.wjhuang.com/posts/2b10bcfa/';
+        this.page.identifier = 'posts/2b10bcfa/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'learning-sea' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
-
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
     </div>
 </div>
 </div>
@@ -749,7 +743,7 @@
 <script>
 var IcarusThemeSettings = {
     site: {
-        url: 'https://blog.weitw.net',
+        url: 'https://blog.wjhuang.com',
         external_link: {"enable":true,"exclude":[]}
     },
     article: {
