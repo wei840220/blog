@@ -7,34 +7,30 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>標籤: Websocket - 學海無涯，回頭是岸</title>
+<title>正則表達式 Regular Expression 與深入應用 - 學海無涯，回頭是岸</title>
 
 
-    <meta name="description" content="Wei 的前端技術部落格">
-<meta property="og:type" content="website">
-<meta property="og:title" content="學海無涯，回頭是岸">
-<meta property="og:url" content="https://blog.wjhuang.com/tags/Websocket/index.html">
+    <meta name="description" content="前言在資料驗證時，常常必須進行字串比對的工作，我們能藉由 正則表達式（Regular Expression） 來判斷是否字串具有符合的格式。 善用正則表達式能幫助我們用更加簡潔的程式碼去驗證字串，再利用 String 中的 match() 或 replace() 等方法對字串做更進一步的處理。  建立正則表達式在 JavaScript 中，我們有兩種方式可以建立正則表達式：  建立字面值 1var">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正則表達式 Regular Expression 與深入應用">
+<meta property="og:url" content="https://blog.wjhuang.com/posts/f1f89997/index.html">
 <meta property="og:site_name" content="學海無涯，回頭是岸">
-<meta property="og:description" content="Wei 的前端技術部落格">
+<meta property="og:description" content="前言在資料驗證時，常常必須進行字串比對的工作，我們能藉由 正則表達式（Regular Expression） 來判斷是否字串具有符合的格式。 善用正則表達式能幫助我們用更加簡潔的程式碼去驗證字串，再利用 String 中的 match() 或 replace() 等方法對字串做更進一步的處理。  建立正則表達式在 JavaScript 中，我們有兩種方式可以建立正則表達式：  建立字面值 1var">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://blog.wjhuang.com/images/og_image.png">
+<meta property="og:image" content="https://i.imgur.com/Tk7xs2e.jpg">
+<meta property="article:published_time" content="2018-06-20T03:05:30.000Z">
+<meta property="article:modified_time" content="2021-02-09T20:11:51.209Z">
 <meta property="article:author" content="Wei">
-<meta property="article:tag" content="前端">
-<meta property="article:tag" content="frontend">
 <meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="HTML">
-<meta property="article:tag" content="CSS">
-<meta property="article:tag" content="Vue">
-<meta property="article:tag" content="React">
-<meta property="article:tag" content="jQuery">
+<meta property="article:tag" content="RegExp">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.wjhuang.com/images/og_image.png">
+<meta name="twitter:image" content="https://i.imgur.com/Tk7xs2e.jpg">
 
 
 
 
 
-<link rel="alternative" href="/atom.xml" title="學海無涯，回頭是岸" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="正則表達式 Regular Expression 與深入應用" type="application/atom+xml">
 
 
 
@@ -105,7 +101,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="學海無涯，回頭是岸" height="28">
+                <img src="/images/logo.svg" alt="正則表達式 Regular Expression 與深入應用" height="28">
             
             </a>
         </div>
@@ -133,6 +129,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜尋" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -146,34 +146,23 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">標籤</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Websocket</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-image">
-        <a href="/posts/2b10bcfa/" class="image is-7by1">
-            <img class="thumbnail" src="https://i.imgur.com/APW1lja.png" alt="淺談 Polling, Comet, Websocket">
-        </a>
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="https://i.imgur.com/Tk7xs2e.jpg" alt="正則表達式 Regular Expression 與深入應用">
+        </span>
     </div>
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-07-31T05:02:28.000Z">2017-07-31</time>
+                <time class="level-item has-text-grey" datetime="2018-06-20T03:05:30.000Z">2018-06-20</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                <a class="has-link-grey -link" href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/">學習筆記</a>
                 </div>
                 
                 
@@ -183,25 +172,195 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/2b10bcfa/">淺談 Polling, Comet, Websocket</a>
+                正則表達式 Regular Expression 與深入應用
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>現在需要做即時回應與更新的網站已是愈來愈多，大至 Facebook、Twitter，小至即時聊天室的實作等等，在以前使用者只能靠著重新載入網頁才能獲得最新的資訊，但是這樣不但很浪費時間，也會佔用很多不必要的網路資源，並不是一個好的方式。</p>
-<p>現在要實作這樣的功能，當然不能不知道一些<strong>網路推播技術 Internet Push technology</strong>——對這個名詞很陌生嗎？讓我們來看看<a href="https://zh.wikipedia.org/wiki/%E6%8E%A8%E9%80%81%E6%8A%80%E6%9C%AF">維基百科</a>的說明：</p>
-<blockquote>
-<p>  <strong>推播技術</strong>，是一種基於 Internet 通訊方式的伺服器推播，其中要求通訊的請求是由發布者或中央伺服器發起。與 pull/get 形成對比，資訊傳輸的相應一般由接收者或用戶端發起。<br>  推動服務通常是基於提前的資訊預設定上。也就是所謂的 publish/subscribe 模型，客戶通過訂閱由伺服器提供各種資訊的頻道，不論何時都可以在其中一個頻道得到新的內容，同樣伺服器通過推播把資訊傳遞給相應的用戶端。</p>
-</blockquote>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在資料驗證時，常常必須進行字串比對的工作，我們能藉由 <strong>正則表達式（Regular Expression）</strong> 來判斷是否字串具有符合的格式。</p>
+<p>善用<strong>正則表達式</strong>能幫助我們用更加簡潔的程式碼去驗證字串，再利用 String 中的 <code>match()</code> 或 <code>replace()</code> 等方法對字串做更進一步的處理。 </p>
+<h2 id="建立正則表達式"><a href="#建立正則表達式" class="headerlink" title="建立正則表達式"></a>建立正則表達式</h2><p>在 JavaScript 中，我們有兩種方式可以建立正則表達式：</p>
+<ul>
+<li><p>建立字面值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="regexp">/JavaScript/</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建立 RegExp 物件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'JavaScript'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>如果是不變的值，使用字面值來建立會具有較好的效能。</p>
+</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="正則表達式中的特殊字元"><a href="#正則表達式中的特殊字元" class="headerlink" title="正則表達式中的特殊字元"></a>正則表達式中的特殊字元</h2><p>正則表達式由數個簡易字元組成，下面列出在正則表達式中個人比較常利用的特殊字元。</p>
+<h3 id="一般常見"><a href="#一般常見" class="headerlink" title="一般常見"></a>一般常見</h3><ul>
+<li><code>\</code>：跳脫特殊字元（如 <code>\.</code> 找 “.” 或是 <code>\/</code> 找 “/“）</li>
+<li><code>.</code>：任意字元</li>
+<li><code>^</code>：字元的開頭</li>
+<li><code>$</code>：字元的結尾</li>
+<li><code>[abc]</code> ：比對是否為中括號中的 a 或 b 或 c</li>
+<li><code>[^abc]</code>：不是中括號中的 a 或 b 或 c 的任何字元</li>
+<li><code>[a-z]</code> ：抓任何小寫 a-z 之間的字元</li>
+<li><code>[a-zA-Z]</code> ：抓任何小寫 a-z 和大寫 A-Z 之間字元</li>
+<li><code>[0-9]</code>：數字字元</li>
+<li><code>|</code>：OR</li>
+<li><code>()</code>：群組</li>
+</ul>
+<h3 id="指定匹配字元"><a href="#指定匹配字元" class="headerlink" title="指定匹配字元"></a>指定匹配字元</h3><p>前面我們曾提及一種特殊字元，也就是反斜線。<br>反斜線 <code>\</code> 在前可表示<strong>轉義</strong> (escaping) ，將其後的特殊字元視為一般字元。<br>如果要表示的字串中含有 <code>/</code> 字元時，就必須寫作 <code>/\//</code>。</p>
+<p>但別把跳脫字元和下面這類型的特殊字元混淆了。</p>
+<ul>
+<li><code>\d</code>：匹配任何數字字元</li>
+<li><code>\D</code>：匹配任何不是數字字元</li>
+<li><code>\w</code> ：匹配所有文字字元 + 底線，其實等於 <code>[a-z\dA-Z_]</code></li>
+<li><code>\W</code>：匹配所有非文字字元（標點符號、特殊字元等）</li>
+<li><code>\s</code>：匹配空格字元</li>
+<li><code>\S</code>：匹配任何<strong>非空格字元</strong></li>
+<li><code>\b</code>：在邊界的字元, 如 <code>hello</code> 會得到 [“h”, “o”]</li>
+</ul>
+<h3 id="指定匹配次數"><a href="#指定匹配次數" class="headerlink" title="指定匹配次數"></a>指定匹配次數</h3><p>以下字元<strong>只會針對前一個位置的匹配規則作用</strong></p>
+<ul>
+<li><code>*</code>：0 或更多</li>
+<li><code>+</code>：1 或更多</li>
+<li><code>?</code>：0 或 1 次</li>
+<li><code>{m}</code>：m 次</li>
+<li><code>{n,}</code>：最少 n 次</li>
+<li><code>{m,n}</code>：m 到 n 次</li>
+<li><code>{m, n}?</code>：從 m 號到 n 次，取匹配最少次的</li>
+</ul>
+<h3 id="flags-旗標"><a href="#flags-旗標" class="headerlink" title="flags 旗標"></a>flags 旗標</h3><p>正則表達式可以設定不同的甚至是多個 <strong>flag</strong> 來改變預設規則。</p>
+<ul>
+<li><code>/.../i</code>：不區分大小寫</li>
+<li><code>/.../g</code>：<strong>全局匹配模式</strong>，得以重複匹配多次，否則預設固定回傳第一個結果</li>
+</ul>
+<h2 id="實際撰寫正則表達式"><a href="#實際撰寫正則表達式" class="headerlink" title="實際撰寫正則表達式"></a>實際撰寫正則表達式</h2><p>下面以幾個例子說明該如何撰寫正則表達式。</p>
+<h3 id="範例一：手機號碼"><a href="#範例一：手機號碼" class="headerlink" title="範例一：手機號碼"></a>範例一：手機號碼</h3><ul>
+<li>撰寫思維：判斷是不是十位數數字所組成</li>
+<li>正則表達式：<code>[0-9]{10}</code></li>
+</ul>
+<h3 id="範例二：email"><a href="#範例二：email" class="headerlink" title="範例二：email"></a>範例二：email</h3><ul>
+<li>撰寫思維：以 <code>@</code> 為中點，可以把字串切分成前半部和後半部<ul>
+<li>前半部以任意文字字元和 <code>-</code> 組成任意長度</li>
+<li>後半部以任意文字字元和 <code>.</code> 組成任意長度</li>
+</ul>
+</li>
+<li>正則表達式：<ol>
+<li>先以 <code>[\w\-]</code> 表達任意文字字元或 <code>-</code> 的字元</li>
+<li>加上加號 <code>[\w\-]+</code> 取取符合規則的一個或多個字元</li>
+<li>後半部如法炮製出 <code>[\w\-].</code></li>
+<li>最後加上中間的 <code>@</code> 並以括號包成群組，得到 <code>([\w\-]+@[\w\.]+)</code></li>
+</ol>
+</li>
+</ul>
+<h3 id="範例三：不確定如何分隔的手機號碼"><a href="#範例三：不確定如何分隔的手機號碼" class="headerlink" title="範例三：不確定如何分隔的手機號碼"></a>範例三：不確定如何分隔的手機號碼</h3><ul>
+<li>撰寫思維：手機號碼可能以分隔線 <code>-</code> 或是空白字元分隔<br>一樣先拆成三個部分，各自檢查是否符合規則</li>
+<li>正則表達式：<ol>
+<li>先以 <code>\d{4}</code> 表達四位數字字元如 <code>0912</code></li>
+<li>後面可能用空格或是 <code>-</code> 隔開，所以變成 <code>\d{4}[\s\-]?</code></li>
+<li>如法炮製其他部分，得到 <code>\d{4}[\s\-]?\d{3}[\s\-]?\d{3}</code></li>
+</ol>
+</li>
+</ul>
+<h3 id="其他常見實例"><a href="#其他常見實例" class="headerlink" title="其他常見實例"></a>其他常見實例</h3><p>以下實例會以字面值，也就是兩個 <code>/</code> 包裹字元的形式來表示。</p>
+<table>
+<thead>
+<tr>
+<th>RegExp</th>
+<th>說明</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/^\d{4}-\d{2}-\d{2}$/</code></td>
+<td>西元生日格式</td>
+<td>“1996-08-06”</td>
+</tr>
+<tr>
+<td><code>/^[A-Z]\d{9}$/</code></td>
+<td>身分證字號</td>
+<td>“A123456789”</td>
+</tr>
+<tr>
+<td><code>/^09\d{8}$/</code></td>
+<td>手機號碼</td>
+<td>“0912345678”</td>
+</tr>
+<tr>
+<td><code>/^[^aeiou]*$/</code></td>
+<td>不包含小寫母音的字串</td>
+<td>“hEllO”,”ApplE”</td>
+</tr>
+<tr>
+<td><code>/^.*@gmail\.com$/</code></td>
+<td>gmail 信箱</td>
+<td>“test@gmail.com”</td>
+</tr>
+<tr>
+<td><code>/^[0-9\+\-\*\/]*$/</code></td>
+<td>四則運算算式</td>
+<td>“1+2*3”</td>
+</tr>
+</tbody></table>
+<h2 id="實際應用"><a href="#實際應用" class="headerlink" title="實際應用"></a>實際應用</h2><p>接下來介紹一些常用的方法，如 RegExp 的 <code>test()</code> 和 <code>exec()</code> 方法，或是 String 的 <code>match()</code> 和 <code>replace()</code> 方法。</p>
+<p>這些只是個人比較常用到的，實際上還有其他可搭配應用的方法，有興趣可以再參閱其他技術文件。</p>
+<h3 id="RegExp-prototype-test"><a href="#RegExp-prototype-test" class="headerlink" title="RegExp.prototype.test()"></a>RegExp.prototype.test()</h3><p>語法形如 <code>regexObj.test(str)</code><br>對正則表達式檢查某個字串是否匹配其規則，並回傳 <code>true</code> 或 <code>false</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result1 = (<span class="regexp">/han/</span>).test(<span class="string">'hannah1'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result1); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result2 = (<span class="regexp">/nan/</span>).test(<span class="string">'hannah1'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result2); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="RegExp-prototype-exec"><a href="#RegExp-prototype-exec" class="headerlink" title="RegExp.prototype.exec()"></a>RegExp.prototype.exec()</h3><p>語法形如 <code>regexObj.exec(str)</code><br>對正則表達式連續檢查字串的匹配結果，回傳符合結果的陣列或是 <code>null</code>。</p>
+<p>每次執行會把成功匹配的末位紀錄在 <code>regexObj.lastIndex</code> 中，做為下一次匹配開始的位置。並且可搭配<strong>全局匹配模式</strong>和 <code>()</code> <strong>群組</strong>的特殊字元來使用，能得到更進一步分組的結果陣列。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="regexp">/(foo)([\w]+)/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'table football, foosball'</span>;</span><br><span class="line"><span class="keyword">var</span> array;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> ((array = re.exec(str)) != <span class="literal">null</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(array, re.lastIndex);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Array ["football", "foo", "tball"] 14</span></span><br><span class="line"><span class="comment">// Array ["foosball", "foo", "sball"] 24</span></span><br></pre></td></tr></table></figure>
+
+<p>以第一次 <code>console.log</code> 的結果陣列 <code>array</code> 為例，這個結果陣列會有以下屬性：</p>
+<table>
+<thead>
+<tr>
+<th>屬性</th>
+<th>說明</th>
+<th>實例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[0]</td>
+<td>匹配的全部字串</td>
+<td>“football”</td>
+</tr>
+<tr>
+<td>[1], …, [n]</td>
+<td>括號中的分組匹配字串</td>
+<td>[1] = “foo” </br> [2] = “tball”</td>
+</tr>
+<tr>
+<td>index</td>
+<td>匹配到的字串起點位於原始字串的索引值</td>
+<td>6</td>
+</tr>
+<tr>
+<td>input</td>
+<td>原始字串值</td>
+<td>“table football, foosball”</td>
+</tr>
+</tbody></table>
+<h3 id="String-prototype-match"><a href="#String-prototype-match" class="headerlink" title="String.prototype.match()"></a>String.prototype.match()</h3><p>語法形如 <code>str.match(regexp)</code></p>
+<p>對一個字串判斷是否符合正則表達式的結果，會回傳匹配字串或 <code>null</code>。<br>如果是<strong>全局匹配模式</strong>，則會回傳匹配字串之結果陣列。此結果陣列的格式與 <code>RegExp.prototype.exec()</code> 相同。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="regexp">/[ABC]/gi</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.match(re)); <span class="comment">// ["A", "B", "C", "a", "b", "c"]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/[\d]/g</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.match(regex)); <span class="comment">// null</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str.match()); <span class="comment">// [""]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="String-prototype-replace"><a href="#String-prototype-replace" class="headerlink" title="String.prototype.replace()"></a>String.prototype.replace()</h3><p>語法形如 <code>str.replace(regexp|substr, newSubstr|function)</code></p>
+<p>對一個字串與 <code>pattern</code> 比對，這個 <code>pattern</code> 可以是字串也可以是正則表達式，再以 <code>replacement</code> 取代吻合處，此處的 <code>replacement</code> 則可以是字串或函式。<br>並且可搭配<strong>群組</strong>的特殊字元來使用，能指定一個字串為參數，形如 <code>$n</code>，代表第 <code>n</code> 項的分組匹配字串。</p>
+<p>必須注意的是，<strong><code>replace()</code> 方法並不會改變原有字串</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'We wish you a merry xmas! We wish you a merry xmas!'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(s.replace(<span class="regexp">/xmas/i</span>, <span class="string">'Christmas'</span>));</span><br><span class="line"><span class="comment">// We wish you a merry Christmas! We wish you a merry xmas!</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'John Smith'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(<span class="regexp">/(\w+)\s(\w+)/</span>, <span class="string">'$2, $1'</span>));</span><br><span class="line"><span class="comment">// Smith, John</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>字串比對和資料驗證等問題算是很容易接觸到的狀況，利用正則表達式我們就能夠更簡單去驗證其格式的正確性。</p>
+<p>初次接觸確實會讓人覺得簡直像是無字天書，但實際搞懂每個特殊字元的對應意義，日後無論是要自己撰寫規則還是檢閱他人的驗證規則，其實也不是這麼困難的事。</p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/2b10bcfa/#more">繼續閱讀</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="has-link-grey -link" href="/tags/RegExp/" rel="tag">RegExp</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -211,9 +370,52 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/350dd70b/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Hexo + GitHub Actions 打造自動部署</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/7694b685/">
+                <span class="level-item">Vue.js 新手上路</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://blog.wjhuang.com/posts/f1f89997/';
+        this.page.identifier = 'posts/f1f89997/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'learning-sea' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 </div>
                 
 
@@ -326,218 +528,90 @@
 </div>
     
         
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分類
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/">
-            <span class="level-start">
-                <span class="level-item">學習筆記</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">6</span>
-            </span>
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#前言">
+        <span class="has-mr-6">1</span>
+        <span>前言</span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">
-            <span class="level-start">
-                <span class="level-item">技術心得</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
+        <a class="is-flex" href="#建立正則表達式">
+        <span class="has-mr-6">2</span>
+        <span>建立正則表達式</span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E9%8C%84/">
-            <span class="level-start">
-                <span class="level-item">生活紀錄</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                標籤
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/AJAX/">
-                        <span class="tag">AJAX</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/AMP/">
-                        <span class="tag">AMP</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/CI-CD/">
-                        <span class="tag">CI/CD</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Cloudflare/">
-                        <span class="tag">Cloudflare</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Comet/">
-                        <span class="tag">Comet</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Git/">
-                        <span class="tag">Git</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Github/">
-                        <span class="tag">Github</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Google-Domains/">
-                        <span class="tag">Google Domains</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Gulp/">
-                        <span class="tag">Gulp</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/HTML/">
-                        <span class="tag">HTML</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Hexo/">
-                        <span class="tag">Hexo</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/JSON/">
-                        <span class="tag">JSON</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/JavaScript/">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/NCTUCS/">
-                        <span class="tag">NCTUCS</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/RegExp/">
-                        <span class="tag">RegExp</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/SEO/">
-                        <span class="tag">SEO</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/SFTP/">
-                        <span class="tag">SFTP</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/SSL/">
-                        <span class="tag">SSL</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Sublime/">
-                        <span class="tag">Sublime</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Vue/">
-                        <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Websocket/">
-                        <span class="tag">Websocket</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jQuery/">
-                        <span class="tag">jQuery</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/%E8%81%B7%E6%B6%AF/">
-                        <span class="tag">職涯</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
+        <a class="is-flex" href="#正則表達式中的特殊字元">
+        <span class="has-mr-6">3</span>
+        <span>正則表達式中的特殊字元</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#一般常見">
+        <span class="has-mr-6">3.1</span>
+        <span>一般常見</span>
+        </a></li><li>
+        <a class="is-flex" href="#指定匹配字元">
+        <span class="has-mr-6">3.2</span>
+        <span>指定匹配字元</span>
+        </a></li><li>
+        <a class="is-flex" href="#指定匹配次數">
+        <span class="has-mr-6">3.3</span>
+        <span>指定匹配次數</span>
+        </a></li><li>
+        <a class="is-flex" href="#flags-旗標">
+        <span class="has-mr-6">3.4</span>
+        <span>flags 旗標</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#實際撰寫正則表達式">
+        <span class="has-mr-6">4</span>
+        <span>實際撰寫正則表達式</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#範例一：手機號碼">
+        <span class="has-mr-6">4.1</span>
+        <span>範例一：手機號碼</span>
+        </a></li><li>
+        <a class="is-flex" href="#範例二：email">
+        <span class="has-mr-6">4.2</span>
+        <span>範例二：email</span>
+        </a></li><li>
+        <a class="is-flex" href="#範例三：不確定如何分隔的手機號碼">
+        <span class="has-mr-6">4.3</span>
+        <span>範例三：不確定如何分隔的手機號碼</span>
+        </a></li><li>
+        <a class="is-flex" href="#其他常見實例">
+        <span class="has-mr-6">4.4</span>
+        <span>其他常見實例</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#實際應用">
+        <span class="has-mr-6">5</span>
+        <span>實際應用</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#RegExp-prototype-test">
+        <span class="has-mr-6">5.1</span>
+        <span>RegExp.prototype.test()</span>
+        </a></li><li>
+        <a class="is-flex" href="#RegExp-prototype-exec">
+        <span class="has-mr-6">5.2</span>
+        <span>RegExp.prototype.exec()</span>
+        </a></li><li>
+        <a class="is-flex" href="#String-prototype-match">
+        <span class="has-mr-6">5.3</span>
+        <span>String.prototype.match()</span>
+        </a></li><li>
+        <a class="is-flex" href="#String-prototype-replace">
+        <span class="has-mr-6">5.4</span>
+        <span>String.prototype.replace()</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#結語">
+        <span class="has-mr-6">6</span>
+        <span>結語</span>
+        </a></li></ul>
             </div>
         </div>
     </div>
-</div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -791,7 +865,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="學海無涯，回頭是岸" height="28">
+                    <img src="/images/logo.svg" alt="正則表達式 Regular Expression 與深入應用" height="28">
                 
                 </a>
                 <p class="is-size-7">
