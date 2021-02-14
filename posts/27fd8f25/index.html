@@ -7,29 +7,30 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>善用 Rebase 的 Git 工作流程 - 學海無涯，回頭是岸</title>
+<title>如何修改 GitHub 上已存在之 Repo 名稱 - 學海無涯，回頭是岸</title>
 
 
-    <meta name="description" content="前言筆記一下工作上慣用的 Git 工作流程，也大略提及一下 Merge 和 Rebase 的差異。 分支的合併完成作業的 Topic 分支，最終都會合併到 Integration 分支。合併分支有兩種方法：使用 merge 或 rebase。兩者都是合併歷史記錄，但是根據使用的方法合併後的分支歷史記錄有很大的差別。">
+    <meta name="description" content="前言在 GitHub 上已有遠端 Repository 時，也許會事後反悔、想修改 Repo 名稱 在這裡筆記一下這種情形下的標準做法 修改遠端 Repo 名稱以 GitHub 為例，先進入遠端 Repo 的設定頁面： 1https:&#x2F;&#x2F;github.com&#x2F;&lt;github 帳號&gt;&#x2F;&lt;repo 名稱&gt;&#x2F;settings">
 <meta property="og:type" content="article">
-<meta property="og:title" content="善用 Rebase 的 Git 工作流程">
-<meta property="og:url" content="https://blog.wjhuang.com/posts/9d63e457/index.html">
+<meta property="og:title" content="如何修改 GitHub 上已存在之 Repo 名稱">
+<meta property="og:url" content="https://blog.wjhuang.com/posts/27fd8f25/index.html">
 <meta property="og:site_name" content="學海無涯，回頭是岸">
-<meta property="og:description" content="前言筆記一下工作上慣用的 Git 工作流程，也大略提及一下 Merge 和 Rebase 的差異。 分支的合併完成作業的 Topic 分支，最終都會合併到 Integration 分支。合併分支有兩種方法：使用 merge 或 rebase。兩者都是合併歷史記錄，但是根據使用的方法合併後的分支歷史記錄有很大的差別。">
+<meta property="og:description" content="前言在 GitHub 上已有遠端 Repository 時，也許會事後反悔、想修改 Repo 名稱 在這裡筆記一下這種情形下的標準做法 修改遠端 Repo 名稱以 GitHub 為例，先進入遠端 Repo 的設定頁面： 1https:&#x2F;&#x2F;github.com&#x2F;&lt;github 帳號&gt;&#x2F;&lt;repo 名稱&gt;&#x2F;settings">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://snippetinfo.net/sysdata/doc/4/41f7d6c3f65e1b1a/c291.jpg">
-<meta property="article:published_time" content="2017-11-01T02:53:37.000Z">
+<meta property="og:image" content="https://i.imgur.com/L3XcoMq.png">
+<meta property="article:published_time" content="2021-02-14T14:28:00.000Z">
 <meta property="article:modified_time" content="2021-02-14T14:35:49.059Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="Git">
+<meta property="article:tag" content="GitHub">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://snippetinfo.net/sysdata/doc/4/41f7d6c3f65e1b1a/c291.jpg">
+<meta name="twitter:image" content="https://i.imgur.com/L3XcoMq.png">
 
 
 
 
 
-<link rel="alternative" href="/atom.xml" title="善用 Rebase 的 Git 工作流程" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="如何修改 GitHub 上已存在之 Repo 名稱" type="application/atom+xml">
 
 
 
@@ -100,7 +101,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="善用 Rebase 的 Git 工作流程" height="28">
+                <img src="/images/logo.svg" alt="如何修改 GitHub 上已存在之 Repo 名稱" height="28">
             
             </a>
         </div>
@@ -150,7 +151,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="https://snippetinfo.net/sysdata/doc/4/41f7d6c3f65e1b1a/c291.jpg" alt="善用 Rebase 的 Git 工作流程">
+            <img class="thumbnail" src="https://i.imgur.com/L3XcoMq.png" alt="如何修改 GitHub 上已存在之 Repo 名稱">
         </span>
     </div>
     
@@ -158,7 +159,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-11-01T02:53:37.000Z">2017-11-01</time>
+                <time class="level-item has-text-grey" datetime="2021-02-14T14:28:00.000Z">2021-02-14</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/">學習筆記</a>
@@ -171,31 +172,39 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                善用 Rebase 的 Git 工作流程
+                如何修改 GitHub 上已存在之 Repo 名稱
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>筆記一下工作上慣用的 Git 工作流程，也大略提及一下 Merge 和 Rebase 的差異。</p>
-<h2 id="分支的合併"><a href="#分支的合併" class="headerlink" title="分支的合併"></a>分支的合併</h2><p>完成作業的 Topic 分支，最終都會合併到 Integration 分支。<br>合併分支有兩種方法：使用 <strong>merge</strong> 或 <strong>rebase</strong>。<br>兩者都是合併歷史記錄，但是根據使用的方法合併後的分支歷史記錄有很大的差別。</p>
-<p><img src="https://i.imgur.com/MucvWQq.png" alt=""></p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 GitHub 上已有遠端 Repository 時，也許會事後反悔、想修改 Repo 名稱</p>
+<p>在這裡筆記一下這種情形下的標準做法</p>
+<h2 id="修改遠端-Repo-名稱"><a href="#修改遠端-Repo-名稱" class="headerlink" title="修改遠端 Repo 名稱"></a>修改遠端 Repo 名稱</h2><p>以 GitHub 為例，先進入遠端 Repo 的設定頁面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;&lt;github 帳號&gt;&#x2F;&lt;repo 名稱&gt;&#x2F;settings</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/lwnPIZC.png" alt=""></p>
+<ol>
+<li>把 <strong>Repository name</strong> 欄位改成新的 Repo 名稱</li>
+<li>確認新名稱可以使用，會跳出 <code>&lt;新名稱&gt; is available</code> 的訊息</li>
+<li>點擊 <strong>Rename</strong> 更新 Repo 名稱</li>
+</ol>
 <a id="more"></a>
 
-<h3 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h3><p>修改內容的歷史記錄會維持原狀，但是合併後的歷史紀錄會變得更複雜。<br><img src="https://i.imgur.com/fZnV9YR.png" alt=""></p>
-<p>Git 在做 merge 時，會自動判斷現在的狀況是否適合是使用 <strong>fast-forward</strong>，或是我們可以透過加上 <code>--ff</code> 或是 <code>--no-ff</code> 來強制設定是否使用 fast-forward，差別如下：<br><img src="https://cdn-images-1.medium.com/max/800/1*SjSWhbwhPqFUTlPL8IV2mg.png" alt=""></p>
-<p><code>--no-ff</code> 會多出一個 merge commit，而 <code>--ff</code> 會直接視為 master 分支上多出的 commit。<br>可視需求決定要使用哪種。</p>
-<h3 id="Rebase"><a href="#Rebase" class="headerlink" title="Rebase"></a>Rebase</h3><p>修改內容的歷史記錄會接在要合併的分支後面，合併後的歷史記錄會比較清楚簡單，但是，會比使用 merge 更容易發生衝突。<br><img src="https://i.imgur.com/XXoH6Nr.png" alt=""></p>
-<p><img src="https://i.imgur.com/8NqcY1V.png" alt=""></p>
-<h2 id="Git-工作流程"><a href="#Git-工作流程" class="headerlink" title="Git 工作流程"></a>Git 工作流程</h2><p>如果我們要將 feature branch 合併進 master</p>
-<ul>
-<li><p>先切換到 feature branch，update 之後把遠端的 master 分支 rebase 進來<br><code>git checkout branch-name</code><br><code>git remote update</code><br><code>git rebase origin/master</code></p>
-</li>
-<li><p>切換到本地 master，當然要先確認本地 master 與遠端同步<br><code>git checkout master</code><br><code>git merge --ff origin/master</code></p>
-</li>
-<li><p>把 feature branch 給 merge 進來 master，同時要保留新增功能用的commit<br><code>git merge --no-ff branch-name</code></p>
-</li>
-<li><p>將本地 master 推上遠端<br><code>git push origin master</code></p>
-</li>
-</ul>
+<h2 id="更新本地端的遠端-Repo-位置"><a href="#更新本地端的遠端-Repo-位置" class="headerlink" title="更新本地端的遠端 Repo 位置"></a>更新本地端的遠端 Repo 位置</h2><p>GitHub 更新 Repo 名稱後，複製新的遠端伺服器網址，格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git@github.com:&lt;github 帳號&gt;&#x2F;&lt;repo 名稱&gt;.git</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/3GvHuQr.gif" alt=""></p>
+<p>切換到本地端資料夾，打開終端機輸入指令</p>
+<ol>
+<li>使用 <strong><code>git remote set-url</code></strong> 指令，更改遠端伺服器網址</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url origin git@github.com:&lt;github 帳號&gt;&#x2F;&lt;repo 名稱&gt;.git</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用 <strong><code>git remote -v</code></strong> 指令，確認遠端伺服器網址</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+<p>如此一來便大功告成</p>
 
         </div>
         
@@ -203,7 +212,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Git/" rel="tag">Git</a>
+                    <a class="has-link-grey -link" href="/tags/Git/" rel="tag">Git</a>, <a class="has-link-grey -link" href="/tags/GitHub/" rel="tag">GitHub</a>
                 </div>
             </div>
         </div>
@@ -220,17 +229,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/dc7de635/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">淺談 AMP (Accelerated Mobile Pages)</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/posts/cb4a7f47/">
-                <span class="level-item">資工系學士畢業新鮮人的自白</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/f6df526e/">
+                <span class="level-item">2021 年初前端工程師求職心得</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -246,8 +248,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://blog.wjhuang.com/posts/9d63e457/';
-        this.page.identifier = 'posts/9d63e457/';
+        this.page.url = 'https://blog.wjhuang.com/posts/27fd8f25/';
+        this.page.identifier = 'posts/27fd8f25/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -387,21 +389,13 @@
         <span class="has-mr-6">1</span>
         <span>前言</span>
         </a></li><li>
-        <a class="is-flex" href="#分支的合併">
+        <a class="is-flex" href="#修改遠端-Repo-名稱">
         <span class="has-mr-6">2</span>
-        <span>分支的合併</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#Merge">
-        <span class="has-mr-6">2.1</span>
-        <span>Merge</span>
+        <span>修改遠端 Repo 名稱</span>
         </a></li><li>
-        <a class="is-flex" href="#Rebase">
-        <span class="has-mr-6">2.2</span>
-        <span>Rebase</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#Git-工作流程">
+        <a class="is-flex" href="#更新本地端的遠端-Repo-位置">
         <span class="has-mr-6">3</span>
-        <span>Git 工作流程</span>
+        <span>更新本地端的遠端 Repo 位置</span>
         </a></li></ul>
             </div>
         </div>
@@ -660,7 +654,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="善用 Rebase 的 Git 工作流程" height="28">
+                    <img src="/images/logo.svg" alt="如何修改 GitHub 上已存在之 Repo 名稱" height="28">
                 
                 </a>
                 <p class="is-size-7">
