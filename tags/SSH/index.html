@@ -7,13 +7,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>學海無涯，回頭是岸 - Wei 的前端技術部落格</title>
+<title>標籤: SSH - 學海無涯，回頭是岸</title>
 
 
     <meta name="description" content="Wei 的前端技術部落格">
 <meta property="og:type" content="website">
 <meta property="og:title" content="學海無涯，回頭是岸">
-<meta property="og:url" content="https://blog.wjhuang.com/index.html">
+<meta property="og:url" content="https://blog.wjhuang.com/tags/SSH/index.html">
 <meta property="og:site_name" content="學海無涯，回頭是岸">
 <meta property="og:description" content="Wei 的前端技術部落格">
 <meta property="og:locale" content="zh_TW">
@@ -113,7 +113,7 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/">Home</a>
                 
                 <a class="navbar-item"
@@ -146,13 +146,23 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">標籤</a></li>
+            <li class="is-active"><a href="#" aria-current="page">SSH</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
     
 <div class="card">
     
     <div class="card-image">
-        <a href="/posts/27fd8f25/" class="image is-7by1">
-            <img class="thumbnail" src="https://i.imgur.com/L3XcoMq.png" alt="如何修改 GitHub 上已存在之 Repo 名稱">
+        <a href="/posts/83ff426e/" class="image is-7by1">
+            <img class="thumbnail" src="https://i.imgur.com/mYb9TQo.png" alt="使用 Sublime SFTP 同步檔案">
         </a>
     </div>
     
@@ -160,7 +170,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-02-14T14:28:00.000Z">2021-02-14</time>
+                <time class="level-item has-text-grey" datetime="2017-08-23T12:26:07.000Z">2017-08-23</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/">學習筆記</a>
@@ -173,20 +183,19 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/posts/27fd8f25/">如何修改 GitHub 上已存在之 Repo 名稱</a>
+                <a class="has-link-black-ter" href="/posts/83ff426e/">使用 Sublime SFTP 同步檔案</a>
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 GitHub 上已有遠端 Repository 時，也許會事後反悔、想修改 Repo 名稱</p>
-<p>在這裡筆記一下這種情形下的標準做法</p>
-<h2 id="修改遠端-Repo-名稱"><a href="#修改遠端-Repo-名稱" class="headerlink" title="修改遠端 Repo 名稱"></a>修改遠端 Repo 名稱</h2><p>以 GitHub 為例，先進入遠端 Repo 的設定頁面：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;&lt;github 帳號&gt;&#x2F;&lt;repo 名稱&gt;&#x2F;settings</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.imgur.com/lwnPIZC.png" alt=""></p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在開始介紹 SFTP 以前，我們要先聊聊 <strong>SSH (Secure Shell)</strong> 協定。沒聽過 SSH 嗎？</p>
+<p>那你或許有聽過 <strong>Telnet</strong>，沒錯！就是廣大鄉民們平常用來上 PTT 的連線協定。<br>Telnet 易用，速度又快，只要執行 Telnet 程式來連線到遠端伺服器，使用者輸入帳密後便可以遠端控制主機。</p>
+<p>但是由於 Telnet 傳輸的資料並未加密，所以容易遭到竊取，後來 SSH 橫空出世，SSH 預設是以金鑰為基礎來驗證及加密傳輸，也可以省去輸入帳號密碼的步驟，大家也就多改用較為安全的 SSH。</p>
+<h2 id="SSH（Secure-Shell）"><a href="#SSH（Secure-Shell）" class="headerlink" title="SSH（Secure Shell）"></a>SSH（Secure Shell）</h2><p>接下來我們進一步介紹 SSH 協定的運作原理：</p>
 <ol>
-<li>把 <strong>Repository name</strong> 欄位改成新的 Repo 名稱</li>
-<li>確認新名稱可以使用，會跳出 <code>&lt;新名稱&gt; is available</code> 的訊息</li>
-<li>點擊 <strong>Rename</strong> 更新 Repo 名稱</li>
+<li>靠加密編碼的演算法，產生一組很長又混亂的字串及檔案</li>
+<li>這組資料分別為<strong>私鑰 (private key)</strong> 與<strong>公鑰 (public key)</strong></li>
+<li>接著<strong>將公鑰傳至想要可以免帳號密碼登入的主機上</strong></li>
+<li>登入主機進行驗證後，主機就會認為你是經過驗證的使用者，就可以登入囉。</li>
 </ol>
         </div>
         
@@ -194,7 +203,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/27fd8f25/#more">繼續閱讀</a>
+                <a class="button is-size-7 is-light" href="/posts/83ff426e/#more">繼續閱讀</a>
                 </div>
             </div>
         </div>
@@ -210,539 +219,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/posts/f6df526e/" class="image is-7by1">
-            <img class="thumbnail" src="https://i.imgur.com/9P9GffJ.jpg" alt="2021 年初前端工程師求職心得">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-02-07T16:00:00.000Z">2021-02-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E9%8C%84/">生活紀錄</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/f6df526e/">2021 年初前端工程師求職心得</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>去年九月，我離開了人生的第一份工作。</p>
-<p>趁著這幾個月好好休息充電、去考汽車駕照、寫些自己喜歡的 project、靜下來思考未來職涯規劃等等。<br>直到十二月多開始閒得有些發慌，才又打定主意回歸求職市場。</p>
-<p>實際上這是我第一次如此認真準備面試，總體來說我很喜歡這種「費盡心思去爭取機會」的過程，也想寫下現在的自己在求職方面是如何思考。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/f6df526e/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/posts/747bdc82/" class="image is-7by1">
-            <img class="thumbnail" src="https://i.imgur.com/MnQEFox.png" alt="什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-22T17:24:59.000Z">2019-12-23</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/747bdc82/">什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>當你使用 Chrome 瀏覽器時，是否曾留意過網址列出現的「<strong>不安全</strong>」？</p>
-<p>尤其辛辛苦苦架好網站，甚至加上自訂域名，卻看到那幾個字，顯得格外刺眼——為什麼會出現這個呢？</p>
-<p>這是因為 Google 鼓勵網站加上 SSL 憑證，那些能以 HTTPS 加密通訊協定存取的網站，就會加上綠色鎖頭字樣！甚至還列入了搜尋演算法的指標中，影響 SEO 排名。</p>
-<p>話說到這裡，這個 SSL 憑證到底是什麼？</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/747bdc82/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/posts/350dd70b/" class="image is-7by1">
-            <img class="thumbnail" src="https://i.imgur.com/ecETp6l.png" alt="Hexo + GitHub Actions 打造自動部署">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-22T15:59:59.000Z">2019-12-22</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/350dd70b/">Hexo + GitHub Actions 打造自動部署</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>這篇文章的出現，要從兩年前開始說起，那時候的我才剛開始摸 <a href="https://hexo.io/zh-tw/index.html">Hexo</a>。<br>當時的我比起其他平台，像是 Wordpress / Medium / Logdown 等等諸如此類，更喜歡 markdown 寫作方式，所以興致沖沖地架了個部落格。</p>
-<p>但是很快地，過了大約一年左右便很少更新：<strong>為什麼會這樣呢？</strong><br>終歸一句當然還是懶啦。</p>
-<p>主要是靜態網頁的佈署步驟太麻煩，必須滿足本地端有 Hexo 檔案的前提，我偏偏又喜歡用 <a href="https://hackmd.io/">HackMD</a> 撰寫，一來一往之間步驟太過繁複。</p>
-<p>久而久之，這段時間我傾向於使用 HackMD 整理個人筆記，懶得發表技術文章到 blog 上。<br>——直到我注意到 GitHub 推出 <strong>CI/CD 服務</strong>，能幫助我解決這個麻煩！趁這個機會我打算順便打理 Hexo 架構，把菜鳥時期我搭建的部落格重新打掉，在 2020 前夕超進化！</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/350dd70b/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/posts/f1f89997/" class="image is-7by1">
-            <img class="thumbnail" src="https://i.imgur.com/Tk7xs2e.jpg" alt="正則表達式 Regular Expression 與深入應用">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-06-20T03:05:30.000Z">2018-06-20</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/">學習筆記</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/f1f89997/">正則表達式 Regular Expression 與深入應用</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在資料驗證時，常常必須進行字串比對的工作，我們能藉由 <strong>正則表達式（Regular Expression）</strong> 來判斷是否字串具有符合的格式。</p>
-<p>善用<strong>正則表達式</strong>能幫助我們用更加簡潔的程式碼去驗證字串，再利用 String 中的 <code>match()</code> 或 <code>replace()</code> 等方法對字串做更進一步的處理。 </p>
-<h2 id="建立正則表達式"><a href="#建立正則表達式" class="headerlink" title="建立正則表達式"></a>建立正則表達式</h2><p>在 JavaScript 中，我們有兩種方式可以建立正則表達式：</p>
-<ul>
-<li><p>建立字面值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="regexp">/JavaScript/</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>建立 RegExp 物件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'JavaScript'</span>);</span><br></pre></td></tr></table></figure>
-
-<p>如果是不變的值，使用字面值來建立會具有較好的效能。</p>
-</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/f1f89997/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/posts/7694b685/" class="image is-7by1">
-            <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1920/1*nfvapd86apvGH-hNBYkYuw.png" alt="Vue.js 新手上路">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-02-03T15:06:49.000Z">2018-02-03</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/">學習筆記</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/7694b685/">Vue.js 新手上路</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在開始學習今天的主題之前，我們要來先討論一下：<strong>為什麼要學框架（Framework）？</strong><br>因為很潮正夯特流行嗎？因為業界好找工作嗎？又有什麼是只用 jQuery 辦不到的事情嗎？</p>
-<p>簡單來說，<strong>jQuery</strong> 是<strong>以 DOM 元素來觸發功能</strong>，能幫助我們更簡單的實現網頁上的資料互動及事件處理方法，同時也簡化了許多 AJAX 的操作方法，是設計動畫效果的絕佳利器。</p>
-<p>然而 <strong>框架（Framework）</strong> 包括你聽過的三神獸 <strong>Vue</strong>, <strong>Angular</strong>, <strong>React</strong>，都是<strong>以資料來驅動功能</strong>，適合用來撰寫一些以資料為主體的網頁以及 SPA，能幫助我們更加簡潔地去處理資料邏輯。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/7694b685/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/posts/dc7de635/" class="image is-7by1">
-            <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1460/1*ClDLBc3jPb-Rg7h-fC5p_Q.png" alt="淺談 AMP (Accelerated Mobile Pages)">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-12-10T02:51:00.000Z">2017-12-10</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/dc7de635/">淺談 AMP (Accelerated Mobile Pages)</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>網站速度、內容品質，這些都是 SEO的排名因素，同時也跟用戶體驗息息相關。而 Google 在<a href="https://googleblog.blogspot.tw/2015/10/introducing-accelerated-mobile-pages.html">2015 年正式發佈</a>其獨有的 <strong>AMP</strong> 框架，中文為 <strong>加速版行動網頁</strong> 。</p>
-<p>AMP是 Google 獨有的網頁框架，用來使行動裝置網頁能快速載入。如果你有架設 AMP框架，促進使用者體驗優化，也許會讓該頁面的 rankng 提升 ，同時這個框架也能夠非常有效的提升用戶體驗，未來 AMP將有可能會越來越被重視、且也有可能在搜尋排名中佔有更強的影響力。</p>
-<p><a href="https://www.ampproject.org/docs/tutorials/create">Google 官方網站</a>上也一步步演示了要如何架設 AMP 網站，主要可分為三大部分</p>
-<ul>
-<li>AMP HTML</li>
-<li>AMP JS</li>
-<li>AMP Cache</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/dc7de635/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/posts/9d63e457/" class="image is-7by1">
-            <img class="thumbnail" src="https://snippetinfo.net/sysdata/doc/4/41f7d6c3f65e1b1a/c291.jpg" alt="善用 Rebase 的 Git 工作流程">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-11-01T02:53:37.000Z">2017-11-01</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/">學習筆記</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/9d63e457/">善用 Rebase 的 Git 工作流程</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>筆記一下工作上慣用的 Git 工作流程，也大略提及一下 Merge 和 Rebase 的差異。</p>
-<h2 id="分支的合併"><a href="#分支的合併" class="headerlink" title="分支的合併"></a>分支的合併</h2><p>完成作業的 Topic 分支，最終都會合併到 Integration 分支。<br>合併分支有兩種方法：使用 <strong>merge</strong> 或 <strong>rebase</strong>。<br>兩者都是合併歷史記錄，但是根據使用的方法合併後的分支歷史記錄有很大的差別。</p>
-<p><img src="https://i.imgur.com/MucvWQq.png" alt=""></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/9d63e457/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/posts/cb4a7f47/" class="image is-7by1">
-            <img class="thumbnail" src="https://i.imgur.com/PAiTPCt.jpg" alt="資工系學士畢業新鮮人的自白">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-10-19T04:58:02.000Z">2017-10-19</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E9%8C%84/">生活紀錄</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/cb4a7f47/">資工系學士畢業新鮮人的自白</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>  當初應屆推本校資工所都沒上<br>  我很煩惱是不是該繼續往資工這條路走 – by young60509</p>
-</blockquote>
-<p>上週在批踢踢軟體版看到網友  young60509 發表的文章，<a href="https://www.ptt.cc/bbs/Soft_Job/M.1507876000.A.433.html">[請益] 該不該往資工走下去…</a> 作為同屆畢業生我看了也難免有感而發。</p>
-<p>這篇文章並不會告訴大家，我在資工系修過什麼課、做了什麼事、遇到什麼人、學到什麼樣的東西，主要是想說說就讀資工系的我，甫畢業之初的一些看法。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/cb4a7f47/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/posts/20d7c148/" class="image is-7by1">
-            <img class="thumbnail" src="https://i.imgur.com/LXFgRuH.jpg" alt="我在社群網路公司實習的日子">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-09-24T11:30:00.000Z">2017-09-24</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E9%8C%84/">生活紀錄</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/posts/20d7c148/">我在社群網路公司實習的日子</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今年四月，我投遞出人生的第一份履歷。</p>
-<p>我使用該公司的社群網路服務已有近七年之久，於是當他們釋出前端工程師的實習職位，考慮不過半天、回過神來我已將履歷投至對方信箱——也很幸運地，在經過篩選與面試後，我獲得了暑期實習的合作機會。</p>
-<p>經過一段時間沈澱之後，我想我是該好好寫篇文章，分享我在短短兩個月的實習過程之中的所見所學。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/posts/20d7c148/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    
-<div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/page/0/">上一頁</a>
-        </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/2/">下一頁</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link is-current" href="/">1</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
-            
-        </ul>
-    </nav>
-</div>
 </div>
                 
 
