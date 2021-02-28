@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.1.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>macOS 打造前端開發環境 - 學海無涯，回頭是岸</title>
+
+
+    <meta name="description" content="前言最近剛拿到新的 MacBook Pro，早忘了幾年前安裝環境究竟處理過什麼細節有些參考資料又比較過時，因此決定把這次安裝的程序以及設定的細節記錄下來 以下所使用的是 macOS Big Sur 11.2.1 的 MacBook Pro (13-inch, 2020) 安裝 HomebrewHomebrew 是 Mac 系統中的套件管理工具利用 Homebrew 能讓我們不必藉由 App Sto">
+<meta property="og:type" content="article">
+<meta property="og:title" content="macOS 打造前端開發環境">
+<meta property="og:url" content="https://blog.wjhuang.com/posts/56efe959/index.html">
+<meta property="og:site_name" content="學海無涯，回頭是岸">
+<meta property="og:description" content="前言最近剛拿到新的 MacBook Pro，早忘了幾年前安裝環境究竟處理過什麼細節有些參考資料又比較過時，因此決定把這次安裝的程序以及設定的細節記錄下來 以下所使用的是 macOS Big Sur 11.2.1 的 MacBook Pro (13-inch, 2020) 安裝 HomebrewHomebrew 是 Mac 系統中的套件管理工具利用 Homebrew 能讓我們不必藉由 App Sto">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/QkZmCtv.png">
+<meta property="article:published_time" content="2020-02-27T15:59:59.000Z">
+<meta property="article:modified_time" content="2021-02-28T06:17:51.633Z">
+<meta property="article:author" content="Wei">
+<meta property="article:tag" content="macOS">
+<meta property="article:tag" content="Homebrew">
+<meta property="article:tag" content="NVM">
+<meta property="article:tag" content="zsh">
+<meta property="article:tag" content="zimfw">
+<meta property="article:tag" content="iTerm2">
+<meta property="article:tag" content="VSCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/QkZmCtv.png">
+
+
+
+
+
+<link rel="alternative" href="/atom.xml" title="macOS 打造前端開發環境" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_16x16.ico">
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_32x32.ico">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_apple_touch.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102201439-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-102201439-2');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="macOS 打造前端開發環境" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="https://i.imgur.com/QkZmCtv.png" alt="macOS 打造前端開發環境">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-27T15:59:59.000Z">2020-02-27</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/">學習筆記</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                macOS 打造前端開發環境
+            
+        </h1>
+        <div class="content">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近剛拿到新的 MacBook Pro，早忘了幾年前安裝環境究竟處理過什麼細節<br>有些參考資料又比較過時，因此決定把這次安裝的程序以及設定的細節記錄下來</p>
+<p>以下所使用的是 macOS Big Sur 11.2.1 的 MacBook Pro (13-inch, 2020)</p>
+<h2 id="安裝-Homebrew"><a href="#安裝-Homebrew" class="headerlink" title="安裝 Homebrew"></a>安裝 Homebrew</h2><p><a href="https://brew.sh/index_zh-tw.html">Homebrew</a> 是 Mac 系統中的套件管理工具<br>利用 Homebrew 能讓我們不必藉由 App Store 或下載安裝檔就能取得許多軟體</p>
+<p>在終端機輸入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;HEAD&#x2F;install.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<p>後面會盡可能利用 <code>brew</code> 指令來安裝軟體，加快效率</p>
+<a id="more"></a>
+
+<h2 id="安裝-Xcode-Command-Line-Tool"><a href="#安裝-Xcode-Command-Line-Tool" class="headerlink" title="安裝 Xcode Command Line Tool"></a>安裝 Xcode Command Line Tool</h2><p>Command Line Tools 是在 Xcode 中的一款工具，在 macOS 中，有許多的工具或是語言都會依賴這個命令列開發者工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-select --install</span><br></pre></td></tr></table></figure>
+
+<h2 id="安裝-NVM"><a href="#安裝-NVM" class="headerlink" title="安裝 NVM"></a>安裝 NVM</h2><p>在安裝開發前端必備的 <strong>Node.js</strong> 以前，先讓我們來安裝 <a href="https://github.com/nvm-sh/nvm">NVM</a>，英文全名是 Node Version Manager<br>NVM 的用途如同英文全名，便是用來管理 Node 版本的工具。因為在不同的專案之間，我們可能必須要切換不同版本的運行環境，這時 NVM 便能幫助我們輕鬆切換</p>
+<p>在終端機輸入以下指令來安裝</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;nvm-sh&#x2F;nvm&#x2F;v0.35.2&#x2F;install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<p>安裝完再輸入下面的指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR&#x3D;&quot;$HOME&#x2F;.nvm&quot;</span><br><span class="line">[ -s &quot;$NVM_DIR&#x2F;nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR&#x2F;nvm.sh&quot;  # This loads nvm</span><br></pre></td></tr></table></figure>
+<p>這會把 NVM 的 Repo 資料夾複製到 <code>~/.nvm</code>，接著把 source line 加進 profile 設定檔中（<code>~/.bash_profile</code>、<code>~/.zshrc</code>、<code>~/.profile</code>或<code>~/.bashrc</code>）</p>
+<h2 id="透過-NVM-安裝-Node-js"><a href="#透過-NVM-安裝-Node-js" class="headerlink" title="透過 NVM 安裝 Node.js"></a>透過 NVM 安裝 Node.js</h2><p>JavaScript 通常是執行在瀏覽器的環境中，而 <a href="https://nodejs.org/en/">Node.js</a> 能讓我們在後端（脫離瀏覽器環境的情況）中建立起能執行 JavaScript 的環境</p>
+<p>使用 NVM 安裝最新版本的 Node.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install node</span><br></pre></td></tr></table></figure>
+
+<p>或是安裝最新 LTS 版本的 Node.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install --lts</span><br></pre></td></tr></table></figure>
+
+<p>也可以安裝指定的 Node.js 版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install 12.16.3</span><br></pre></td></tr></table></figure>
+
+<p>需要切換當前使用版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm use 12</span><br></pre></td></tr></table></figure>
+
+<p>要查看目前是使用哪個版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm current</span><br></pre></td></tr></table></figure>
+
+<h2 id="安裝-NPM"><a href="#安裝-NPM" class="headerlink" title="安裝 NPM"></a>安裝 NPM</h2><p>其實在我們安裝 Node.js 時，通常都會附帶安裝 <a href="https://www.npmjs.com/">NPM</a>，英文全名為 Node Package Manager<br>NPM 是套件管理工具，能幫助我們管理專案的安裝套件，做到自動下載和版本控制等等的事情</p>
+<p>雖然剛才已經順帶安裝了，但我想指定使用特定版本的 NPM</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g npm@6.14.4</span><br></pre></td></tr></table></figure>
+
+<p>這裡使用了縮寫 <code>i</code> 表示 <code>install</code>，<code>-g</code> 則是 <code>--global</code> 的縮寫，代表全域安裝，而不只是安裝在目前的專案目錄裡</p>
+<h2 id="安裝-wget"><a href="#安裝-wget" class="headerlink" title="安裝 wget"></a>安裝 wget</h2><p><a href="https://www.gnu.org/software/wget/">wget</a> 和前面我們所用到的 curl 指令，兩者都是 Linux 中用來下載檔案的<br>只不過在 macOS 中並沒有預設安裝 wget，但未來我們可能還是有機會用上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install wget</span><br></pre></td></tr></table></figure>
+
+<h2 id="安裝-Git"><a href="#安裝-Git" class="headerlink" title="安裝 Git"></a>安裝 Git</h2><p><a href="https://git-scm.com/">Git</a> 是一種版本控制系統<br>其實 MacOS 預設是有安裝 Git 的，只是有版本過舊的可能</p>
+<p>確認目前的 Git 版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<p>需要的話，重新安裝 Git 來取得最新版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;git&#x2F;git</span><br></pre></td></tr></table></figure>
+
+<p>記得設定 <code>git config</code> 的識別資料，這樣每次 Git 的提交才會標註上你的資訊</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;John Doe&quot;</span><br><span class="line">git config --global user.email johndoe@example.com</span><br></pre></td></tr></table></figure>
+
+<p>確認 <code>git config</code> 的資訊</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<h2 id="安裝-iTerm2"><a href="#安裝-iTerm2" class="headerlink" title="安裝 iTerm2"></a>安裝 iTerm2</h2><p>比起原生終端機，我個人還是喜歡使用 <a href="https://iterm2.com/">iTerm2</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install iterm2</span><br></pre></td></tr></table></figure>
+
+<p>接下來設定顏色樣式，到 <a href="https://iterm2colorschemes.com/">Iterm2-color-schemes</a> 挑一個喜歡的顏色組合吧！</p>
+<p>滑鼠右鍵、另存連結，存下 <code>.itermcolors</code> 檔案，再回到 iTerm2 中依序點擊</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Preferences → Profiles → Colors → Color Presets... → Import...</span><br></pre></td></tr></table></figure>
+
+<p>選擇剛才下載的 <code>.itermcolors</code> 檔案（我使用的是 <a href="https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Brogrammer.itermcolors">Brogrammer</a>）</p>
+<h2 id="安裝-zsh"><a href="#安裝-zsh" class="headerlink" title="安裝 zsh"></a>安裝 zsh</h2><p>Zsh 又稱為 Z shell，和常聽到的 Bash 類似，都是一種 shell 工具<br>從 macOS Catalina（10.15）版本後，是使用 Zsh 作為預設 shell</p>
+<p>如果是以前的系統版本，會需要再手動安裝</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install zsh</span><br></pre></td></tr></table></figure>
+
+<p>確認是否安裝成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zsh --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="安裝-zimfw"><a href="#安裝-zimfw" class="headerlink" title="安裝 zimfw"></a>安裝 zimfw</h2><p><a href="https://zimfw.sh/">Zim</a> 是一個管理 zsh 組態設定的框架</p>
+<p>以前我使用的其實是另一個叫做 <a href="https://ohmyz.sh/">oh-my-zsh</a> 的老牌框架，但是 oh-my-zsh 比較肥一些</p>
+<p>直到後來我發現了 Zim，一些我常用的功能在 Zim 之中也都有，<a href="https://github.com/zimfw/zimfw/wiki/Speed">速度</a>又相較 oh-my-zsh 快上不少，所以就改用這個</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;zimfw&#x2F;install&#x2F;master&#x2F;install.zsh | zsh</span><br></pre></td></tr></table></figure>
+
+<h2 id="安裝-Powerlevel10k"><a href="#安裝-Powerlevel10k" class="headerlink" title="安裝 Powerlevel10k"></a>安裝 Powerlevel10k</h2><p><a href="https://github.com/romkatv/powerlevel10k">Powerlevel10k</a> 是一個 Zsh 外觀主題，還有方便的自動設定介面</p>
+<p>要搭配 Zim 安裝，可以輸入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ~&#x2F;.zimrc</span><br></pre></td></tr></table></figure>
+
+<p>把 <code>zmodule steeef</code> 這行改成 <code>zmodule romkatv/powerlevel10k</code></p>
+<p>儲存退出後，回到終端機輸入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zimfw install</span><br><span class="line">source ~&#x2F;.zshrc</span><br></pre></td></tr></table></figure>
+<p>便會進入 Powerlevel10k 的自動設定介面</p>
+<p><img src="https://i.imgur.com/nPErbkB.png" alt=""></p>
+<p>如果沒有的話，先重開終端機，再輸入設定指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p10k configure</span><br></pre></td></tr></table></figure>
+<p>理論上在過程中會自動安裝我們所需要的 powerline 字體 - Meslo Nerd Font</p>
+<p>要回到 iTerm2 中確認字型是 <code>MesloLGS NF</code> 並設定字體大小，依序點選</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Preferences → Profiles → Text</span><br></pre></td></tr></table></figure>
+
+<h2 id="安裝-VSCode"><a href="#安裝-VSCode" class="headerlink" title="安裝 VSCode"></a>安裝 VSCode</h2><p>程式碼編輯器 <a href="https://code.visualstudio.com/">Visual Studio Code</a>，吃飯工具相信不用多做解釋</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask visual-studio-code</span><br></pre></td></tr></table></figure>
+
+<p>再打開 VSCode 按下 Command + Shift + P，安裝 Shell 指令 <code>code</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Install &#39;code&#39; command in PATH command</span><br></pre></td></tr></table></figure>
+
+<p><code>code</code> 指令能讓我們在終端機快速用 VSCode 打開檔案或資料夾</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code file_or_folder_name</span><br></pre></td></tr></table></figure>
+
+<p>設定預設終端機和字體，在 VSCode 依序點擊</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Preferences → Settings → Features → Terminal</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>將 <code>OsxExec</code> 的欄位設定成 <code>iTerm.app</code></li>
+<li>將 <code>Font Family</code> 的欄位設定成 <code>MesloLGS NF</code></li>
+</ol>
+<h2 id="安裝其他程式"><a href="#安裝其他程式" class="headerlink" title="安裝其他程式"></a>安裝其他程式</h2><p>到這裡為止，其實已經能滿足大部分的開發需求了<br>再來就是安裝一些瀏覽器或是其他工作上可能需要的工具</p>
+<ul>
+<li>安裝 <a href="https://www.google.com/chrome/">Google Chrome</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask google-chrome</span><br></pre></td></tr></table></figure></li>
+<li>安裝 <a href="https://www.mozilla.org/firefox/">Mozilla Firefox</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask firefox</span><br></pre></td></tr></table></figure></li>
+<li>安裝 <a href="https://www.microsoft.com/edge">Microsoft Edge</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask microsoft-edge</span><br></pre></td></tr></table></figure></li>
+<li>安裝 <a href="https://www.docker.com/">Docker</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask docker</span><br></pre></td></tr></table></figure></li>
+<li>安裝 <a href="https://tmux.github.io/">tmux</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install tmux</span><br></pre></td></tr></table></figure></li>
+<li>安裝 <a href="https://folivora.ai/">BetterTouchTool</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask bettertouchtool</span><br></pre></td></tr></table></figure></li>
+<li>安裝 <a href="https://git-fork.com/">Fork</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask fork</span><br></pre></td></tr></table></figure></li>
+<li>安裝 <a href="https://github.com/jinfeihan57/p7zip">p7zip（7-Zip）</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install p7zip</span><br></pre></td></tr></table></figure></li>
+<li>安裝 <a href="https://slack.com/">Slack</a>（順便一提，我使用的是 <a href="https://slackthemes.net/#/convoy">Convoy</a> 這個顏色主題）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask slack</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>雖然上面洋洋灑灑列了一大篇，但其實還有其他的眉眉角角，比如說</p>
+<ul>
+<li>設定 SSH 金鑰，可以參考我之前寫的另一篇<a href="https://blog.wjhuang.com/posts/83ff426e/#%E5%9C%A8-OSX-%E8%88%87-Linux-%E7%92%B0%E5%A2%83%E4%B8%8B%E7%94%A2%E7%94%9F-SSH-key">文章</a></li>
+<li>安裝 VSCode 的擴充套件</li>
+<li>安裝 Chrome 的擴充功能</li>
+<li>……</li>
+</ul>
+<p>還有許多小工具能幫助開發體驗更加美好，這些就留待未來有機會再補充囉！</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Homebrew/" rel="tag">Homebrew</a>, <a class="has-link-grey -link" href="/tags/NVM/" rel="tag">NVM</a>, <a class="has-link-grey -link" href="/tags/VSCode/" rel="tag">VSCode</a>, <a class="has-link-grey -link" href="/tags/iTerm2/" rel="tag">iTerm2</a>, <a class="has-link-grey -link" href="/tags/macOS/" rel="tag">macOS</a>, <a class="has-link-grey -link" href="/tags/zimfw/" rel="tag">zimfw</a>, <a class="has-link-grey -link" href="/tags/zsh/" rel="tag">zsh</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/posts/f6df526e/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">2021 年初前端工程師求職心得</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/posts/747bdc82/">
+                <span class="level-item">什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://blog.wjhuang.com/posts/56efe959/';
+        this.page.identifier = 'posts/56efe959/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'learning-sea' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Wei">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Wei
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        A Front-End Engineer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Asian, Taiwan</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            16
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分類
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            3
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        標籤
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            32
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/wei840220" target="_blank" rel="noopener">
+                追蹤</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/wei840220">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Gmail" href="mailto:wei840220@gmail.com">
+                
+                <i class="fab fa-google"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#前言">
+        <span class="has-mr-6">1</span>
+        <span>前言</span>
+        </a></li><li>
+        <a class="is-flex" href="#安裝-Homebrew">
+        <span class="has-mr-6">2</span>
+        <span>安裝 Homebrew</span>
+        </a></li><li>
+        <a class="is-flex" href="#安裝-Xcode-Command-Line-Tool">
+        <span class="has-mr-6">3</span>
+        <span>安裝 Xcode Command Line Tool</span>
+        </a></li><li>
+        <a class="is-flex" href="#安裝-NVM">
+        <span class="has-mr-6">4</span>
+        <span>安裝 NVM</span>
+        </a></li><li>
+        <a class="is-flex" href="#透過-NVM-安裝-Node-js">
+        <span class="has-mr-6">5</span>
+        <span>透過 NVM 安裝 Node.js</span>
+        </a></li><li>
+        <a class="is-flex" href="#安裝-NPM">
+        <span class="has-mr-6">6</span>
+        <span>安裝 NPM</span>
+        </a></li><li>
+        <a class="is-flex" href="#安裝-wget">
+        <span class="has-mr-6">7</span>
+        <span>安裝 wget</span>
+        </a></li><li>
+        <a class="is-flex" href="#安裝-Git">
+        <span class="has-mr-6">8</span>
+        <span>安裝 Git</span>
+        </a></li><li>
+        <a class="is-flex" href="#安裝-iTerm2">
+        <span class="has-mr-6">9</span>
+        <span>安裝 iTerm2</span>
+        </a></li><li>
+        <a class="is-flex" href="#安裝-zsh">
+        <span class="has-mr-6">10</span>
+        <span>安裝 zsh</span>
+        </a></li><li>
+        <a class="is-flex" href="#安裝-zimfw">
+        <span class="has-mr-6">11</span>
+        <span>安裝 zimfw</span>
+        </a></li><li>
+        <a class="is-flex" href="#安裝-Powerlevel10k">
+        <span class="has-mr-6">12</span>
+        <span>安裝 Powerlevel10k</span>
+        </a></li><li>
+        <a class="is-flex" href="#安裝-VSCode">
+        <span class="has-mr-6">13</span>
+        <span>安裝 VSCode</span>
+        </a></li><li>
+        <a class="is-flex" href="#安裝其他程式">
+        <span class="has-mr-6">14</span>
+        <span>安裝其他程式</span>
+        </a></li><li>
+        <a class="is-flex" href="#結語">
+        <span class="has-mr-6">15</span>
+        <span>結語</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            標籤雲
+        </h3>
+        <a href="/tags/AJAX/" style="font-size: 15px;">AJAX</a> <a href="/tags/AMP/" style="font-size: 10px;">AMP</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI/CD</a> <a href="/tags/Cloudflare/" style="font-size: 10px;">Cloudflare</a> <a href="/tags/Comet/" style="font-size: 10px;">Comet</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Google-Domains/" style="font-size: 10px;">Google Domains</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/NCTUCS/" style="font-size: 10px;">NCTUCS</a> <a href="/tags/NVM/" style="font-size: 10px;">NVM</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/SFTP/" style="font-size: 10px;">SFTP</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Websocket/" style="font-size: 10px;">Websocket</a> <a href="/tags/iTerm2/" style="font-size: 10px;">iTerm2</a> <a href="/tags/jQuery/" style="font-size: 15px;">jQuery</a> <a href="/tags/macOS/" style="font-size: 10px;">macOS</a> <a href="/tags/zimfw/" style="font-size: 10px;">zimfw</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/%E8%81%B7%E6%B6%AF/" style="font-size: 20px;">職涯</a>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/27fd8f25/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/L3XcoMq.png" alt="如何修改 GitHub 上已存在之 Repo 名稱">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-02-14T14:28:00.000Z">2021-02-14</time></div>
+                    <a href="/posts/27fd8f25/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何修改 GitHub 上已存在之 Repo 名稱</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/">學習筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/f6df526e/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/9P9GffJ.jpg" alt="2021 年初前端工程師求職心得">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-02-07T16:00:00.000Z">2021-02-08</time></div>
+                    <a href="/posts/f6df526e/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2021 年初前端工程師求職心得</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E9%8C%84/">生活紀錄</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/56efe959/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/QkZmCtv.png" alt="macOS 打造前端開發環境">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-27T15:59:59.000Z">2020-02-27</time></div>
+                    <a href="/posts/56efe959/" class="title has-link-black-ter is-size-6 has-text-weight-normal">macOS 打造前端開發環境</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/">學習筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/747bdc82/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/MnQEFox.png" alt="什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T17:24:59.000Z">2019-12-23</time></div>
+                    <a href="/posts/747bdc82/" class="title has-link-black-ter is-size-6 has-text-weight-normal">什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/350dd70b/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/ecETp6l.png" alt="Hexo + GitHub Actions 打造自動部署">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T15:59:59.000Z">2019-12-22</time></div>
+                    <a href="/posts/350dd70b/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo + GitHub Actions 打造自動部署</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            標籤雲
+        </h3>
+        <a href="/tags/AJAX/" style="font-size: 15px;">AJAX</a> <a href="/tags/AMP/" style="font-size: 10px;">AMP</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI/CD</a> <a href="/tags/Cloudflare/" style="font-size: 10px;">Cloudflare</a> <a href="/tags/Comet/" style="font-size: 10px;">Comet</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Google-Domains/" style="font-size: 10px;">Google Domains</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/NCTUCS/" style="font-size: 10px;">NCTUCS</a> <a href="/tags/NVM/" style="font-size: 10px;">NVM</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/SFTP/" style="font-size: 10px;">SFTP</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Websocket/" style="font-size: 10px;">Websocket</a> <a href="/tags/iTerm2/" style="font-size: 10px;">iTerm2</a> <a href="/tags/jQuery/" style="font-size: 15px;">jQuery</a> <a href="/tags/macOS/" style="font-size: 10px;">macOS</a> <a href="/tags/zimfw/" style="font-size: 10px;">zimfw</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/%E8%81%B7%E6%B6%AF/" style="font-size: 20px;">職涯</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/27fd8f25/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/L3XcoMq.png" alt="如何修改 GitHub 上已存在之 Repo 名稱">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-02-14T14:28:00.000Z">2021-02-14</time></div>
+                    <a href="/posts/27fd8f25/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何修改 GitHub 上已存在之 Repo 名稱</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/">學習筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/f6df526e/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/9P9GffJ.jpg" alt="2021 年初前端工程師求職心得">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-02-07T16:00:00.000Z">2021-02-08</time></div>
+                    <a href="/posts/f6df526e/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2021 年初前端工程師求職心得</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E9%8C%84/">生活紀錄</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/56efe959/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/QkZmCtv.png" alt="macOS 打造前端開發環境">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-27T15:59:59.000Z">2020-02-27</time></div>
+                    <a href="/posts/56efe959/" class="title has-link-black-ter is-size-6 has-text-weight-normal">macOS 打造前端開發環境</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/">學習筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/747bdc82/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/MnQEFox.png" alt="什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T17:24:59.000Z">2019-12-23</time></div>
+                    <a href="/posts/747bdc82/" class="title has-link-black-ter is-size-6 has-text-weight-normal">什麼是 SSL？讓 Cloudflare 幫你啟用 HTTPS</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <!-- 
+            <a href="/posts/350dd70b/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.imgur.com/ecETp6l.png" alt="Hexo + GitHub Actions 打造自動部署">
+                </p>
+            </a>
+             -->
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T15:59:59.000Z">2019-12-22</time></div>
+                    <a href="/posts/350dd70b/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo + GitHub Actions 打造自動部署</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%8A%80%E8%A1%93%E5%BF%83%E5%BE%97/">技術心得</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="macOS 打造前端開發環境" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2021 Wei&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Shown on GitHub" href="https://github.com/wei840220/blog">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://blog.wjhuang.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章'
+                // POSTS: '文章',
+                // PAGES: '頁面',
+                // CATEGORIES: '分類',
+                // TAGS: '標籤',
+                // UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
