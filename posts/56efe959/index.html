@@ -10,16 +10,16 @@
 <title>macOS 打造前端開發環境 - 學海無涯，回頭是岸</title>
 
 
-    <meta name="description" content="前言最近剛拿到新的 MacBook Pro，早忘了幾年前安裝環境究竟處理過什麼細節有些參考資料又比較過時，因此決定把這次安裝的程序以及設定的細節記錄下來 以下所使用的是 macOS Big Sur 11.2.1 的 MacBook Pro (13-inch, 2020) 安裝 HomebrewHomebrew 是 Mac 系統中的套件管理工具利用 Homebrew 能讓我們不必藉由 App Sto">
+    <meta name="description" content="前言最近剛拿到新的 MacBook Pro，早忘了幾年前安裝環境究竟處理過什麼細節有些參考資料又比較過時，因此決定把這次安裝的程序和設定的細節記錄下來 以下所使用的是 macOS Big Sur 11.2.1 的 MacBook Pro (13-inch, 2020) 安裝 HomebrewHomebrew 是 Mac 系統中的套件管理工具利用 Homebrew 能讓我們不必藉由 App Stor">
 <meta property="og:type" content="article">
 <meta property="og:title" content="macOS 打造前端開發環境">
 <meta property="og:url" content="https://blog.wjhuang.com/posts/56efe959/index.html">
 <meta property="og:site_name" content="學海無涯，回頭是岸">
-<meta property="og:description" content="前言最近剛拿到新的 MacBook Pro，早忘了幾年前安裝環境究竟處理過什麼細節有些參考資料又比較過時，因此決定把這次安裝的程序以及設定的細節記錄下來 以下所使用的是 macOS Big Sur 11.2.1 的 MacBook Pro (13-inch, 2020) 安裝 HomebrewHomebrew 是 Mac 系統中的套件管理工具利用 Homebrew 能讓我們不必藉由 App Sto">
+<meta property="og:description" content="前言最近剛拿到新的 MacBook Pro，早忘了幾年前安裝環境究竟處理過什麼細節有些參考資料又比較過時，因此決定把這次安裝的程序和設定的細節記錄下來 以下所使用的是 macOS Big Sur 11.2.1 的 MacBook Pro (13-inch, 2020) 安裝 HomebrewHomebrew 是 Mac 系統中的套件管理工具利用 Homebrew 能讓我們不必藉由 App Stor">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/QkZmCtv.png">
 <meta property="article:published_time" content="2021-02-27T15:59:59.000Z">
-<meta property="article:modified_time" content="2021-02-28T06:21:09.758Z">
+<meta property="article:modified_time" content="2021-03-01T08:47:41.922Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="macOS">
 <meta property="article:tag" content="Homebrew">
@@ -181,9 +181,9 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近剛拿到新的 MacBook Pro，早忘了幾年前安裝環境究竟處理過什麼細節<br>有些參考資料又比較過時，因此決定把這次安裝的程序以及設定的細節記錄下來</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近剛拿到新的 MacBook Pro，早忘了幾年前安裝環境究竟處理過什麼細節<br>有些參考資料又比較過時，因此決定把這次安裝的程序和設定的細節記錄下來</p>
 <p>以下所使用的是 macOS Big Sur 11.2.1 的 MacBook Pro (13-inch, 2020)</p>
-<h2 id="安裝-Homebrew"><a href="#安裝-Homebrew" class="headerlink" title="安裝 Homebrew"></a>安裝 Homebrew</h2><p><a href="https://brew.sh/index_zh-tw.html">Homebrew</a> 是 Mac 系統中的套件管理工具<br>利用 Homebrew 能讓我們不必藉由 App Store 或下載安裝檔就能取得許多軟體</p>
+<h2 id="安裝-Homebrew"><a href="#安裝-Homebrew" class="headerlink" title="安裝 Homebrew"></a>安裝 Homebrew</h2><p><a href="https://brew.sh/index_zh-tw.html">Homebrew</a> 是 Mac 系統中的套件管理工具<br>利用 Homebrew 能讓我們不必藉由 App Store 或官網下載安裝檔就能取得許多軟體</p>
 <p>在終端機輸入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;HEAD&#x2F;install.sh)&quot;</span><br></pre></td></tr></table></figure>
 
@@ -193,13 +193,14 @@
 <h2 id="安裝-Xcode-Command-Line-Tool"><a href="#安裝-Xcode-Command-Line-Tool" class="headerlink" title="安裝 Xcode Command Line Tool"></a>安裝 Xcode Command Line Tool</h2><p>Command Line Tools 是在 Xcode 中的一款工具，在 macOS 中，有許多的工具或是語言都會依賴這個命令列開發者工具</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-select --install</span><br></pre></td></tr></table></figure>
 
-<h2 id="安裝-NVM"><a href="#安裝-NVM" class="headerlink" title="安裝 NVM"></a>安裝 NVM</h2><p>在安裝開發前端必備的 <strong>Node.js</strong> 以前，先讓我們來安裝 <a href="https://github.com/nvm-sh/nvm">NVM</a>，英文全名是 Node Version Manager<br>NVM 的用途如同英文全名，便是用來管理 Node 版本的工具。因為在不同的專案之間，我們可能必須要切換不同版本的運行環境，這時 NVM 便能幫助我們輕鬆切換</p>
+<h2 id="安裝-NVM"><a href="#安裝-NVM" class="headerlink" title="安裝 NVM"></a>安裝 NVM</h2><p>在安裝開發前端必備的 <strong>Node.js</strong> 以前，先讓我們來安裝 <a href="https://github.com/nvm-sh/nvm">NVM</a>，英文全名是 Node Version Manager</p>
+<p>NVM 的用途如同英文全名，便是用來管理 Node 版本的工具。因為在不同的專案之間，我們可能必須要切換不同版本的運行環境，這時 NVM 便能幫助我們輕鬆切換</p>
 <p>在終端機輸入以下指令來安裝</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;nvm-sh&#x2F;nvm&#x2F;v0.35.2&#x2F;install.sh | bash</span><br></pre></td></tr></table></figure>
 
 <p>安裝完再輸入下面的指令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR&#x3D;&quot;$HOME&#x2F;.nvm&quot;</span><br><span class="line">[ -s &quot;$NVM_DIR&#x2F;nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR&#x2F;nvm.sh&quot;  # This loads nvm</span><br></pre></td></tr></table></figure>
-<p>這會把 NVM 的 Repo 資料夾複製到 <code>~/.nvm</code>，接著把 source line 加進 profile 設定檔中（<code>~/.bash_profile</code>、<code>~/.zshrc</code>、<code>~/.profile</code>或<code>~/.bashrc</code>）</p>
+<p>這會把 NVM 的 Repo 資料夾複製到 <code>~/.nvm</code><br>然後將 source line 加進 profile 設定檔中（<code>~/.bash_profile</code>、<code>~/.zshrc</code>、<code>~/.profile</code>或<code>~/.bashrc</code>）</p>
 <h2 id="透過-NVM-安裝-Node-js"><a href="#透過-NVM-安裝-Node-js" class="headerlink" title="透過 NVM 安裝 Node.js"></a>透過 NVM 安裝 Node.js</h2><p>JavaScript 通常是執行在瀏覽器的環境中，而 <a href="https://nodejs.org/en/">Node.js</a> 能讓我們在後端（脫離瀏覽器環境的情況）中建立起能執行 JavaScript 的環境</p>
 <p>使用 NVM 安裝最新版本的 Node.js</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install node</span><br></pre></td></tr></table></figure>
@@ -216,7 +217,8 @@
 <p>要查看目前是使用哪個版本</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm current</span><br></pre></td></tr></table></figure>
 
-<h2 id="安裝-NPM"><a href="#安裝-NPM" class="headerlink" title="安裝 NPM"></a>安裝 NPM</h2><p>其實在我們安裝 Node.js 時，通常都會附帶安裝 <a href="https://www.npmjs.com/">NPM</a>，英文全名為 Node Package Manager<br>NPM 是套件管理工具，能幫助我們管理專案的安裝套件，做到自動下載和版本控制等等的事情</p>
+<h2 id="安裝-NPM"><a href="#安裝-NPM" class="headerlink" title="安裝 NPM"></a>安裝 NPM</h2><p>其實在我們安裝 Node.js 時，通常都會附帶安裝 <a href="https://www.npmjs.com/">NPM</a>，英文全名為 Node Package Manager</p>
+<p>NPM 是套件管理工具，能幫助我們管理專案的安裝套件，做到自動下載和版本控制等等的事情</p>
 <p>雖然剛才已經順帶安裝了，但我想指定使用特定版本的 NPM</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g npm@6.14.4</span><br></pre></td></tr></table></figure>
 
@@ -264,7 +266,8 @@
 <p>把 <code>zmodule steeef</code> 這行改成 <code>zmodule romkatv/powerlevel10k</code></p>
 <p>儲存退出後，回到終端機輸入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zimfw install</span><br><span class="line">source ~&#x2F;.zshrc</span><br></pre></td></tr></table></figure>
-<p>便會進入 Powerlevel10k 的自動設定介面</p>
+<p><code>source ~/.zshrc</code> 是用來重新載入配置文件的，也可以直接重新啟動終端機來重載</p>
+<p>重載後便會進入 Powerlevel10k 的自動設定介面</p>
 <p><img src="https://i.imgur.com/nPErbkB.png" alt=""></p>
 <p>如果沒有的話，先重開終端機，再輸入設定指令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p10k configure</span><br></pre></td></tr></table></figure>
@@ -295,6 +298,8 @@
 <li>安裝 <a href="https://www.microsoft.com/edge">Microsoft Edge</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask microsoft-edge</span><br></pre></td></tr></table></figure></li>
 <li>安裝 <a href="https://www.docker.com/">Docker</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask docker</span><br></pre></td></tr></table></figure></li>
 <li>安裝 <a href="https://tmux.github.io/">tmux</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install tmux</span><br></pre></td></tr></table></figure></li>
+<li>安裝 <a href="https://github.com/sharkdp/bat">bat</a>，記得在 <code>~/.zshrc</code> 中加入 <code>alias cat=&quot;bat&quot;</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install bat</span><br></pre></td></tr></table></figure></li>
+<li>安裝 <a href="https://the.exa.website/">exa</a>，記得在 <code>~/.zshrc</code> 中加入 <code>alias ls=&quot;exa&quot;</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install exa</span><br></pre></td></tr></table></figure></li>
 <li>安裝 <a href="https://folivora.ai/">BetterTouchTool</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask bettertouchtool</span><br></pre></td></tr></table></figure></li>
 <li>安裝 <a href="https://git-fork.com/">Fork</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask fork</span><br></pre></td></tr></table></figure></li>
 <li>安裝 <a href="https://github.com/jinfeihan57/p7zip">p7zip（7-Zip）</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install p7zip</span><br></pre></td></tr></table></figure></li>
